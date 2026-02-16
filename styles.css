@@ -813,6 +813,18 @@ a:hover {
     border: 1px solid rgba(102, 126, 234, 0.3);
 }
 
+/* ===== PROJECT LIVE BUTTON ===== */
+.project-live-btn {
+    margin-top: var(--space-sm);
+    font-size: var(--font-size-sm);
+    padding: var(--space-xs) var(--space-md);
+    color: white;
+}
+
+.project-live-btn:hover {
+    color: white;
+}
+
 /* ===== CONTACT SECTION ===== */
 .contact-section {
     background: var(--color-bg-primary);

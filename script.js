@@ -121,6 +121,7 @@ const projects = [
         fullDescription: "A feature-rich calculator application with both standard and scientific modes, built with React and focused on premium user experience. The calculator handles complex mathematical operations, features keyboard support, and implements a clean, intuitive interface with smooth animations. Optimized for both desktop and mobile use.",
         technologies: ["React", "JavaScript", "CSS"],
         gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+        liveUrl: "https://advancedcalcul.netlify.app/",
         features: [
             "Standard and scientific modes",
             "Keyboard input support",
@@ -380,6 +381,14 @@ function renderProjects() {
         <div class="project-tech">
           ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
         </div>
+        ${project.liveUrl ? `<a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary project-live-btn" onclick="event.stopPropagation();">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+          Live Demo
+        </a>` : ''}
       </div>
     `;
 
@@ -415,6 +424,16 @@ function openProjectModal(project) {
                 ${project.features.map(feature => `<li>${feature}</li>`).join('')}
             </ul>
         </div>
+        ${project.liveUrl ? `<div style="margin-top: var(--space-lg); text-align: center;">
+            <a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+                View Live Project
+            </a>
+        </div>` : ''}
     `;
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
