@@ -46,6 +46,7 @@ const projects = [
         fullDescription: "A comprehensive full-stack e-commerce solution built with the MERN stack, featuring a customer-facing storefront and an administrative dashboard. The application implements modern e-commerce features including product catalog management, shopping cart functionality, secure checkout process, and order tracking. The backend utilizes RESTful API architecture with Express.js and MongoDB for data persistence, while the frontend delivers a responsive user experience with React.",
         technologies: ["React", "Node.js", "Express", "MongoDB", "JWT"],
         gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        liveUrl: "https://aurorastore-nine.vercel.app/",
         features: [
             "Product catalog with search and filtering",
             "Shopping cart with real-time updates",
