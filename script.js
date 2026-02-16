@@ -62,6 +62,7 @@ const projects = [
         fullDescription: "An advanced file management system with real-time collaboration capabilities, implementing role-based access control (RBAC) for secure document sharing and editing. The application features WebSocket-based real-time synchronization, allowing multiple users to collaborate simultaneously. Built with security and scalability as core principles, it includes user authentication, permission management, and audit logging.",
         technologies: ["React", "Node.js", "MongoDB", "WebSocket", "Auth"],
         gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+        liveUrl: "https://file-sys-phi.vercel.app/",
         features: [
             "Real-time collaborative editing",
             "Role-based access control (RBAC)",
