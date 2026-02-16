@@ -147,6 +147,22 @@ const projects = [
             "Data export and reporting",
             "Secure data handling"
         ]
+    },
+    {
+        title: "Assurances Cherkaoui - Insurance Agency",
+        description: "Full-Stack MERN application for an insurance agency featuring a dynamic quote simulator, email notifications, and a secure admin dashboard.",
+        fullDescription: "A comprehensive full-stack application built with Next.js, Node.js, and MongoDB for an insurance brokerage agency. The platform features a dynamic quote simulator that allows clients to get instant insurance estimates, an integrated email notification system for seamless communication, and a secure admin dashboard for managing policies, clients, and business operations. Designed with a professional, trust-inspiring interface tailored to the insurance industry.",
+        technologies: ["Next.js", "Node.js", "MongoDB", "Email API"],
+        gradient: "linear-gradient(135deg, #0061ff 0%, #60efff 100%)",
+        liveUrl: "https://assurances-cherkaoui.vercel.app/",
+        features: [
+            "Dynamic insurance quote simulator",
+            "Email notification system",
+            "Secure admin dashboard",
+            "Client and policy management",
+            "Responsive professional design",
+            "Full-stack MERN architecture"
+        ]
     }
 ];
 
