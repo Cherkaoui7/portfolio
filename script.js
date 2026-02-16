@@ -131,6 +131,22 @@ const projects = [
             "Clean, modern design",
             "Error handling and validation"
         ]
+    },
+    {
+        title: "ArchivePro - Employee Management",
+        description: "Progressive web application for HR departments and SMEs, offering complete employee record management with offline capabilities and advanced features.",
+        fullDescription: "ArchivePro is a modern progressive web application designed for HR departments and small/medium enterprises. It provides a complete solution for managing employee records with advanced features including offline functionality, making it reliable even without an internet connection. Built with a focus on usability, performance, and data security, ArchivePro streamlines HR workflows and enhances productivity.",
+        technologies: ["React", "PWA", "JavaScript", "CSS"],
+        gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
+        liveUrl: "https://archivesemp.netlify.app/",
+        features: [
+            "Complete employee record management",
+            "Offline-capable progressive web app",
+            "Advanced search and filtering",
+            "Responsive design for all devices",
+            "Data export and reporting",
+            "Secure data handling"
+        ]
     }
 ];
 
