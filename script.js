@@ -40,6 +40,22 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)
 
 // ===== PROJECT DATA =====
 const projects = [
+        {
+        title: "React Jobs - Job Board",
+        description: "Full-stack job listing platform for React developers with an interactive help assistant.",
+        fullDescription: "A robust MERN stack application designed to connect React developers with employers. It features dynamic job listings, detailed job views, and a custom-built, rule-based ChatBot that provides instant answers to common user queries features. The project demonstrates confident handling of CRUD operations, state management, and modern UI libraries.",
+        technologies: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "Framer Motion"],
+        gradient: "linear-gradient(135deg, #6366f1 0%, #a855f7 100%)", 
+        liveUrl: "https://react-jobs-blond.vercel.app/",
+        features: [
+            "Interactive FAQ ChatBot with suggestion chips",
+            "Browse, filter, and view job details",
+            "RESTful API with MongoDB integration",
+            "Responsive design with Tailwind CSS",
+            "CRUD operations for job listings"
+        ]
+    },
+    
     {
         title: "Aurora - E-Commerce Platform",
         description: "Complete MERN-based e-commerce application with modern storefront and admin dashboard. Features product management, cart logic, REST APIs, and scalable backend architecture.",
