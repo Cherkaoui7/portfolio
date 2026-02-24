@@ -46,7 +46,7 @@ const projects = [
         fullDescription: "A comprehensive full-stack e-commerce solution built with the MERN stack, featuring a customer-facing storefront and an administrative dashboard. The application implements modern e-commerce features including product catalog management, shopping cart functionality, secure checkout process, and order tracking. The backend utilizes RESTful API architecture with Express.js and MongoDB for data persistence, while the frontend delivers a responsive user experience with React.",
         technologies: ["React", "Node.js", "Express", "MongoDB", "JWT"],
         gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-        liveUrl: "https://aurorastore-nine.vercel.app/",
+        liveUrl: "https://aurorastore-six.vercel.app/",
         features: [
             "Product catalog with search and filtering",
             "Shopping cart with real-time updates",
@@ -54,6 +54,22 @@ const projects = [
             "Admin dashboard for inventory management",
             "Order processing and tracking system",
             "Responsive design for all devices"
+        ]
+    },
+    {
+        title: "NexusCart - Full-Stack E-Commerce Platform",
+        description: "Full-stack e-commerce platform with React SPA frontend and Laravel API backend, built for secure customer flows and practical admin operations.",
+        fullDescription: "NexusCart is a full-stack e-commerce system composed of a React 19 + TypeScript + Vite SPA and a Laravel 12 API. It delivers secure and coherent shopping flows, robust admin tooling for products/orders/users, and production-focused operations including observability, reproducible setup, and CI-ready structure. The frontend uses context providers for auth/cart/wishlist/comparison/notifications, Axios with Bearer token interceptor, and React Query. The backend is secured with Sanctum, role-based admin middleware, request tracing via X-Request-Id, and modular business domains such as products, categories, orders, invoices, coupons, reviews, analytics, and product history.",
+        technologies: ["React 19", "TypeScript", "Vite", "Laravel 12", "Sanctum", "MySQL/PostgreSQL/SQLite"],
+        gradient: "linear-gradient(135deg, #f6d365 0%, #fda085 100%)",
+        liveUrl: "https://ecommerce-cherkaoui.vercel.app/",
+        features: [
+            "React SPA with dedicated client and admin experiences",
+            "Secure API auth with Laravel Sanctum Bearer tokens",
+            "Role-based admin authorization via middleware",
+            "Commerce modules: products, categories, orders, invoices, coupons, reviews",
+            "Observability with request IDs and optional structured HTTP logs",
+            "Caching layer with tag invalidation and indexed fallback strategy"
         ]
     },
     {
