@@ -46,7 +46,7 @@ const projects = [
         fullDescription: "A robust MERN stack application designed to connect React developers with employers. It features dynamic job listings, detailed job views, and a custom-built, rule-based ChatBot that provides instant answers to common user queries features. The project demonstrates confident handling of CRUD operations, state management, and modern UI libraries.",
         technologies: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "Framer Motion"],
         gradient: "linear-gradient(135deg, #6366f1 0%, #a855f7 100%)", 
-        liveUrl: "https://react-jobs-blond.vercel.app/",
+        liveUrl: "https://platform-jobs-ch.vercel.app/",
         features: [
             "Interactive FAQ ChatBot with suggestion chips",
             "Browse, filter, and view job details",
