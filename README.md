@@ -5,7 +5,7 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Abdessamad_Cherkaoui-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/cherkaoui-abdessamad-750294212/)
 [![Email](https://img.shields.io/badge/Gmail-cherkaouiabdessamad9-EA4335?style=for-the-badge&logo=gmail)](https://mail.google.com/mail/?view=cm&fs=1&to=cherkaouiabdessamad9@gmail.com)
 
-> A modern, high-performance portfolio featuring an authentic **Monokai terminal code card**, an **interactive neural plexus constellation** for education, a **dynamic tech stack mind map**, and a **zero-reload bilingual engine (English / French)**. Built with pure semantic HTML5, modern CSS3, and vanilla ES6+ JavaScript.
+> A modern, high-performance portfolio featuring an authentic **Monokai terminal code card**, an **interactive neural plexus constellation** for education, an **interactive tech stack mind map with cyber data rain**, **3D holographic project simulations**, and a **zero-reload bilingual engine (English / French)**. Built with pure semantic HTML5, modern CSS3, and vanilla ES6+ JavaScript.
 
 ---
 
@@ -18,8 +18,9 @@
 - [Interactive Sections](#-interactive-sections)
   - [Monokai Hero Code Engine](#1-monokai-hero-code-engine)
   - [Neural Plexus Network (Education)](#2-neural-plexus-network-education)
-  - [Interactive Skills Mind Map](#3-interactive-skills-mind-map)
-  - [Bilingual Engine (EN / FR)](#4-bilingual-engine-en--fr)
+  - [Interactive Skills Mind Map & Cyber Data Rain](#3-interactive-skills-mind-map--cyber-data-rain)
+  - [3D Holographic Project Showcases](#4-3d-holographic-project-showcases)
+  - [Bilingual Engine (EN / FR)](#5-bilingual-engine-en--fr)
 - [Education & Academic Background](#-education--academic-background)
 - [Tech Stack & Architecture](#-tech-stack--architecture)
 - [Project Structure](#-project-structure)
@@ -53,7 +54,10 @@ This repository hosts the official personal portfolio of **Abdessamad Cherkaoui*
 - **⚡ Zero-Build Blazing Speed:** Hand-crafted in pure HTML5, vanilla CSS3, and modern JavaScript (ES6+). Loads instantly with 0 npm bundle latency.
 - **🎨 Monokai Syntax Terminal:** Authentic Monokai code block with typing simulation, syntax tokenization, and glowing macOS window controls.
 - **🧠 Interactive HTML5 Canvas Neural Network:** Dynamic particle canvas with distance-based synaptic connections and interactive mouse attraction physics.
-- **🗺️ SVG Tech Stack Mind Map:** Radial interactive skills ecosystem categorizing frontend, backend, databases, and DevOps.
+- **🌧️ Cyber Data Rain Particle Canvas:** Dedicated 60 FPS HTML5 canvas rendering 75 animated luminous points streaming like cybernetic rain with multi-depth 3D parallax, glowing particle heads, gradient streaks, and real-time mouse breeze deflection.
+- **🗺️ SVG Tech Stack Mind Map:** Radial interactive skills ecosystem with 4 color-coded branches, pulsing satellite hub, and branch-reactive hover states.
+- **✨ 3D Cybernetic Project Visuals:** Hand-crafted CSS3 3D perspective animations for every featured project (rotating 3D WebGL cube with orbit, holographic scanning HUD, cyber security shield with laser beams, chromatic aurora borealis, and telemetry frequency equalizer).
+- **🌓 Seamless Dark & Light Themes:** Zero-flicker theme toggle with persistent storage, high-contrast WCAG-compliant color palettes, blueprint dot-matrix container styling, and dynamic canvas particle re-theming.
 - **🌐 Real-Time Bilingual Toggle:** Instant client-side language switching between English and French without page reload.
 - **🖱️ Precision Physics Micro-Interactions:** Custom magnetic cursor, dual-ring follower, 3D card tilt on hover, and smooth scroll progress monitoring.
 - **📬 Direct Gmail Compose Workflow:** One-click contact button automatically opens a pre-addressed web Gmail draft (`cherkaouiabdessamad9@gmail.com`) bypassing legacy Outlook protocol popups.
@@ -89,16 +93,30 @@ A specialized visual representation of academic milestones rendered as a living 
 - **Canvas Physics:** 38 dynamic synaptic nodes connected by adaptive proximity lines with real-time mouse repulsion and connection tethering.
 - **Floating Glassmorphic Hubs:** Semi-transparent cards with neon green borders, glowing accent nexus nodes, and high-contrast credential badges.
 
-### 3. Interactive Skills Mind Map
+### 3. Interactive Skills Mind Map & Cyber Data Rain
 
-An SVG-driven radial architecture diagram mapping technical competencies across 4 distinct branches:
+An SVG-driven radial architecture diagram mapping technical competencies across 4 distinct, color-coded branches:
 
-- **Frontend Core:** React, Tailwind CSS, Three.js, Modern CSS3.
-- **Backend Architecture:** Node.js, Express, Laravel, RESTful APIs.
-- **Databases & Tools:** MongoDB, MySQL, Git, Docker, Postman.
-- **Core Competencies:** Full-Stack Architecture, AI Integration, Responsive UX, PWA Development.
+- **Cyber Data Rain Canvas (`#mindmapRainCanvas`):** 75 animated luminous points streaming downwards in the background with multi-depth parallax, glowing heads, trailing gradient streaks, and mouse breeze deflection.
+- **4 Color-Coded Pillars:**
+  - **Frontend Core:** Cyan / Ocean Blue (`#0abaff` / `#0284c7`) — React, Next.js, Vue, Angular, Three.js, Framer Motion, Tailwind CSS, Bootstrap, HTML5, CSS3.
+  - **Backend Architecture:** Royal Purple (`#ae50ff` / `#9333ea`) — Node.js, Express.js, PHP, Laravel, Python, REST APIs.
+  - **Database & Tools:** Emerald Teal (`#13d9d1` / `#059669`) — MySQL, MongoDB, SQLite, Git, Vite, NodeMailer, Figma.
+  - **Core Competencies:** Warm Amber (`#ff9f00` / `#d97706`) — Project Management, Responsive Web Design, AI Integration, Team Spirit, Creativity.
+- **High-Tech Blueprint Container:** Dot-matrix grid texture, multi-color gradient top accent rim, radial ambient lighting, and pulsing central hub with orbital satellite nodes.
+- **Branch-Reactive Hover States:** Badges highlight with group-specific neon glow outlines, background tints, and icon magnification on hover.
 
-### 4. Bilingual Engine (EN / FR)
+### 4. 3D Holographic Project Showcases
+
+Hand-crafted CSS3/WebGL-inspired animated visual simulations for each project:
+
+- **JobFinder AI:** 3D perspective scanner HUD with oscillating laser beam, 98% Mistral AI match gauge, and streaming data lines.
+- **DOMINATORES:** Continuous 3D rotating isometric cube (`rotateX(415deg) rotateZ(405deg)`) encased by a cosmic planetary orbit ring.
+- **Assurances Cherkaoui:** Glowing cybernetic security shield with multi-angle laser security rays.
+- **AURORA Store:** Floating glassmorphic product card with dynamic chromatic aurora borealis pulsating backdrop.
+- **ArchivePro:** Digital matrix registry card featuring real-time telemetry frequency equalizer bars.
+
+### 5. Bilingual Engine (EN / FR)
 
 Integrated multilingual architecture managed through [`lang.js`](./lang.js):
 
