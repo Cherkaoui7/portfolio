@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- =========================================================================
+       CANONICAL SITEMAP FOR ABDESSAMAD CHERKAOUI PORTFOLIO
+       Currently deployed at: https://portfolio-ten-zeta-y2ibotfr2g.vercel.app/
+       When attaching a custom domain (e.g., https://YOUR_CANONICAL_DOMAIN.dev/):
+       Replace the <loc> URL below with your official custom domain.
+       ========================================================================= -->
+  <url>
+    <loc>https://portfolio-ten-zeta-y2ibotfr2g.vercel.app/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

@@ -167,6 +167,7 @@ const langToggleBtn = document.getElementById("langToggle");
 function updateTranslations() {
   const t = translations[currentLang];
   if (!t) return;
+  document.documentElement.lang = currentLang;
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.getAttribute("data-i18n");
     if (t[key]) {
