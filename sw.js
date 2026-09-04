@@ -1,11 +1,11 @@
 // Ultra-fast Service Worker for 1ms Cache Retrieval
-const CACHE_NAME = 'cherkaoui-cache-v5';
+const CACHE_NAME = 'cherkaoui-cache-v6';
 const PRECACHE_ASSETS = [
   './',
   './index.html',
-  './style.css?v=20260904_07',
-  './lang.js?v=20260904_07',
-  './script.js?v=20260904_07'
+  './style.css?v=20260904_08',
+  './lang.js?v=20260904_08',
+  './script.js?v=20260904_08'
 ];
 
 self.addEventListener('install', (event) => {
@@ -61,7 +61,7 @@ self.addEventListener('fetch', (event) => {
               caches.open(CACHE_NAME).then((cache) => cache.put(event.request, networkResponse));
             }
           })
-          .catch(() => {});
+          .catch(() => { });
         return cached;
       }
 

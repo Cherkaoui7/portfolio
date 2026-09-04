@@ -1,5 +1,5 @@
-const $ = (s, p=document) => p.querySelector(s);
-const $$ = (s, p=document) => [...p.querySelectorAll(s)];
+const $ = (s, p = document) => p.querySelector(s);
+const $$ = (s, p = document) => [...p.querySelectorAll(s)];
 
 $("#year").textContent = new Date().getFullYear();
 
@@ -21,7 +21,7 @@ const revealObserver = new IntersectionObserver(entries => {
       revealObserver.unobserve(entry.target);
     }
   });
-}, {threshold:.10});
+}, { threshold: .10 });
 $$(".reveal").forEach(el => revealObserver.observe(el));
 
 /* Scroll progress + nav state + decors */
@@ -40,129 +40,85 @@ window.addEventListener("scroll", () => {
       progress.style.width = `${p * 100}%`;
       nav.style.background = scrollY > 30 ? "color-mix(in srgb, var(--bg) 82%, transparent)" : "transparent";
       nav.style.backdropFilter = scrollY > 30 ? "blur(12px)" : "none";
-      
-      if(decorPlane) decorPlane.style.transform = `translateY(${p * (innerHeight + 100)}px) rotate(${15 + p * 35}deg)`;
-      if(decorNet1) decorNet1.style.transform = `translateY(${-(p * (innerHeight + 200))}px) rotate(${p * 20}deg)`;
-      if(decorNet2) decorNet2.style.transform = `translateY(${-(p * (innerHeight + 400))}px) rotate(${-p * 30}deg)`;
+
+      if (decorPlane) decorPlane.style.transform = `translateY(${p * (innerHeight + 100)}px) rotate(${15 + p * 35}deg)`;
+      if (decorNet1) decorNet1.style.transform = `translateY(${-(p * (innerHeight + 200))}px) rotate(${p * 20}deg)`;
+      if (decorNet2) decorNet2.style.transform = `translateY(${-(p * (innerHeight + 400))}px) rotate(${-p * 30}deg)`;
       scrollTicking = false;
     });
     scrollTicking = true;
   }
-}, {passive:true});
+}, { passive: true });
 
-/* Magnetic links — passive & RAF throttled */
+/* Magnetic links */
 $$(".magnetic").forEach(el => {
-  let magTicking = false;
   el.addEventListener("pointermove", e => {
-    if (!magTicking) {
-      requestAnimationFrame(() => {
-        const r = el.getBoundingClientRect();
-        const x = (e.clientX - r.left - r.width / 2) * 0.18;
-        const y = (e.clientY - r.top - r.height / 2) * 0.18;
-        el.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-        magTicking = false;
-      });
-      magTicking = true;
-    }
-  }, { passive: true });
-  el.addEventListener("pointerleave", () => {
-    el.style.transform = "";
-  }, { passive: true });
+    const r = el.getBoundingClientRect();
+    const x = (e.clientX - r.left - r.width / 2) * .18;
+    const y = (e.clientY - r.top - r.height / 2) * .18;
+    el.style.transform = `translate(${x}px,${y}px)`;
+  });
+  el.addEventListener("pointerleave", () => el.style.transform = "");
 });
 
-/* Cursor — Hardware-Accelerated via GPU Transforms & Auto-Sleeping Loop */
+/* Cursor */
 const dot = $(".cursor-dot"), ring = $(".cursor-ring");
-if (matchMedia("(pointer:fine)").matches && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+if (matchMedia("(pointer:fine)").matches) {
   document.body.classList.add("cursor-ready");
-  let mx = -100, my = -100, rx = -100, ry = -100;
-  let cursorActive = false;
-
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  addEventListener("pointermove", e => { mx = e.clientX; my = e.clientY; dot.style.left = mx + "px"; dot.style.top = my + "px"; });
   function cursorLoop() {
-    rx += (mx - rx) * 0.16;
-    ry += (my - ry) * 0.16;
-    ring.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
-
-    // Sleep RAF when ring catches up to mouse within 0.1px threshold
-    if (Math.abs(mx - rx) > 0.1 || Math.abs(my - ry) > 0.1) {
-      requestAnimationFrame(cursorLoop);
-    } else {
-      cursorActive = false;
-    }
+    rx += (mx - rx) * .14; ry += (my - ry) * .14;
+    ring.style.left = rx + "px"; ring.style.top = ry + "px";
+    requestAnimationFrame(cursorLoop);
   }
-
-  window.addEventListener("pointermove", e => {
-    mx = e.clientX;
-    my = e.clientY;
-    dot.style.transform = `translate3d(${mx}px, ${my}px, 0) translate(-50%, -50%)`;
-    if (!cursorActive) {
-      cursorActive = true;
-      requestAnimationFrame(cursorLoop);
-    }
-  }, { passive: true });
-
+  cursorLoop();
   $$("a,button,.project,.skill").forEach(el => {
-    el.addEventListener("mouseenter", () => document.body.classList.add("cursor-hover"), { passive: true });
-    el.addEventListener("mouseleave", () => document.body.classList.remove("cursor-hover"), { passive: true });
+    el.addEventListener("mouseenter", () => document.body.classList.add("cursor-hover"));
+    el.addEventListener("mouseleave", () => document.body.classList.remove("cursor-hover"));
   });
 }
 
-/* Lightweight 3D tilt — disabled on touch and reduced motion */
-if (matchMedia("(pointer:fine)").matches && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+/* Lightweight 3D tilt — disabled on touch screens */
+if (matchMedia("(pointer:fine)").matches) {
   $$(".tilt").forEach(card => {
-    let tiltTicking = false;
     card.addEventListener("pointermove", e => {
-      if (!tiltTicking) {
-        requestAnimationFrame(() => {
-          const r = card.getBoundingClientRect();
-          const x = (e.clientX - r.left) / r.width - 0.5;
-          const y = (e.clientY - r.top) / r.height - 0.5;
-          card.style.transform = `perspective(1000px) rotateX(${-y * 5}deg) rotateY(${x * 7}deg) translate3d(0, -3px, 0)`;
-          tiltTicking = false;
-        });
-        tiltTicking = true;
-      }
-    }, { passive: true });
-    card.addEventListener("pointerleave", () => {
-      card.style.transform = "";
-    }, { passive: true });
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      card.style.transform = `perspective(1000px) rotateX(${-y * 5}deg) rotateY(${x * 7}deg) translateY(-3px)`;
+    });
+    card.addEventListener("pointerleave", () => card.style.transform = "");
   });
 }
 
-/* Hero parallax — RAF throttled */
+/* Hero parallax */
 const heroVisual = $("#heroVisual");
-if (heroVisual && matchMedia("(pointer:fine)").matches && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  let heroParallaxTicking = false;
-  window.addEventListener("pointermove", e => {
-    if (!heroParallaxTicking) {
-      requestAnimationFrame(() => {
-        const x = (e.clientX - innerWidth / 2) / innerWidth;
-        const y = (e.clientY - innerHeight / 2) / innerHeight;
-        heroVisual.style.transform = `translate3d(${x * 8}px, ${y * 6}px, 0)`;
-        heroParallaxTicking = false;
-      });
-      heroParallaxTicking = true;
-    }
-  }, { passive: true });
+if (heroVisual && matchMedia("(pointer:fine)").matches) {
+  addEventListener("pointermove", e => {
+    const x = (e.clientX - innerWidth / 2) / innerWidth;
+    const y = (e.clientY - innerHeight / 2) / innerHeight;
+    heroVisual.style.transform = `translate(${x * 8}px,${y * 6}px)`;
+  });
 }
 
 /* Count-up metrics */
 const countObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
-    const el=entry.target, target=Number(el.dataset.count);
+    const el = entry.target, target = Number(el.dataset.count);
     const suffix = el.dataset.suffix || '';
-    let start=0, t0=performance.now();
-    const tick=t=>{
-      const p=Math.min((t-t0)/900,1);
-      const eased=1-Math.pow(1-p,3);
-      el.textContent=Math.round(start+(target-start)*eased) + suffix;
-      if(p<1) requestAnimationFrame(tick);
+    let start = 0, t0 = performance.now();
+    const tick = t => {
+      const p = Math.min((t - t0) / 900, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(start + (target - start) * eased) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
     countObserver.unobserve(el);
   });
-},{threshold:.6});
-$$("[data-count]").forEach(el=>countObserver.observe(el));
+}, { threshold: .6 });
+$$("[data-count]").forEach(el => countObserver.observe(el));
 
 /* Active nav link */
 const sections = $$("section[id]");
@@ -170,33 +126,33 @@ const navAnchors = $$(".nav-links a");
 const sectionObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
-    navAnchors.forEach(a => a.classList.toggle("active", a.getAttribute("href")==="#"+entry.target.id));
+    navAnchors.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + entry.target.id));
   });
-},{rootMargin:"-35% 0px -55% 0px"});
-sections.forEach(s=>sectionObserver.observe(s));
+}, { rootMargin: "-35% 0px -55% 0px" });
+sections.forEach(s => sectionObserver.observe(s));
 
 /* =========================================================
    MIND MAP RESIZE LOGIC
 ========================================================== */
 function resizeMindmapScene() {
-    const scene = document.querySelector(".scene");
-    const wrapper = document.querySelector(".mindmap-wrapper");
-    if (!scene || !wrapper) return;
+  const scene = document.querySelector(".scene");
+  const wrapper = document.querySelector(".mindmap-wrapper");
+  if (!scene || !wrapper) return;
 
-    const wrapperWidth = wrapper.clientWidth;
-    const wrapperHeight = wrapper.clientHeight;
-    
-    // Original design dimensions
-    const DESIGN_WIDTH = 1536;
-    const DESIGN_HEIGHT = 1024;
+  const wrapperWidth = wrapper.clientWidth;
+  const wrapperHeight = wrapper.clientHeight;
 
-    const scaleX = wrapperWidth / DESIGN_WIDTH;
-    const scaleY = wrapperHeight / DESIGN_HEIGHT;
+  // Original design dimensions
+  const DESIGN_WIDTH = 1536;
+  const DESIGN_HEIGHT = 1024;
 
-    // Use 95% of max possible scale to add a slight internal padding
-    const scale = Math.min(scaleX, scaleY) * 0.95;
+  const scaleX = wrapperWidth / DESIGN_WIDTH;
+  const scaleY = wrapperHeight / DESIGN_HEIGHT;
 
-    scene.style.transform = `scale(${scale})`;
+  // Use 95% of max possible scale to add a slight internal padding
+  const scale = Math.min(scaleX, scaleY) * 0.95;
+
+  scene.style.transform = `scale(${scale})`;
 }
 
 resizeMindmapScene();
@@ -260,7 +216,7 @@ function typeNextChar() {
 
   const lineText = codeLines[currentLine];
   let lineDiv = document.getElementById('line-' + currentLine);
-  
+
   if (!lineDiv) {
     lineDiv = document.createElement('div');
     lineDiv.id = 'line-' + currentLine;
@@ -269,7 +225,7 @@ function typeNextChar() {
   }
 
   const contentSpan = lineDiv.querySelector('.typing-content');
-  
+
   if (currentChar < lineText.length) {
     const currentPartial = lineText.substring(0, currentChar + 1);
     contentSpan.innerHTML = syntaxHighlight(currentPartial);
@@ -277,8 +233,8 @@ function typeNextChar() {
     typewriterTimeout = setTimeout(typeNextChar, Math.random() * 25 + 15);
   } else {
     const cursorInline = lineDiv.querySelector('.terminal-cursor-inline');
-    if(cursorInline) cursorInline.remove();
-    
+    if (cursorInline) cursorInline.remove();
+
     currentLine++;
     currentChar = 0;
     typewriterTimeout = setTimeout(typeNextChar, 120);
@@ -296,39 +252,13 @@ function startTypewriter() {
   }
 }
 
-/* =========================================================
-   PERFORMANCE UTILITIES: IDLE & TASK SCHEDULING
-========================================================== */
-const runWhenIdle = (cb, timeout = 1200) => {
-  if ("requestIdleCallback" in window) {
-    window.requestIdleCallback(cb, { timeout });
-  } else {
-    setTimeout(cb, 40);
-  }
-};
-
-const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-let prefersReducedMotion = motionQuery.matches;
-motionQuery.addEventListener("change", e => {
-  prefersReducedMotion = e.matches;
-});
-
-// Pause typewriter when tab is hidden to save CPU
-document.addEventListener("visibilitychange", () => {
-  if (document.hidden) {
-    if (typewriterTimeout) clearTimeout(typewriterTimeout);
-  } else if (heroCode && currentLine < codeLines.length) {
-    typewriterTimeout = setTimeout(typeNextChar, 100);
-  }
-}, { passive: true });
-
 // Initial language load
 updateTranslations();
 
 /* =========================================================
    LIVE NEURAL PLEXUS CONSTELLATION CANVAS
 ========================================================== */
-function initNeuralConstellation() {
+(function initNeuralConstellation() {
   const canvas = document.getElementById("neuralCanvas");
   if (!canvas) return;
 
@@ -338,10 +268,9 @@ function initNeuralConstellation() {
 
   let width = 0;
   let height = 0;
-  // Cap devicePixelRatio to 2 to eliminate 3x/4x GPU pixel fill penalties
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const dpr = window.devicePixelRatio || 1;
   let animationFrameId = null;
-  let isVisible = false;
+  let isVisible = true;
 
   // Mouse tracking
   const mouse = { x: null, y: null, radius: 140 };
@@ -350,12 +279,12 @@ function initNeuralConstellation() {
     const rect = canvas.getBoundingClientRect();
     mouse.x = e.clientX - rect.left;
     mouse.y = e.clientY - rect.top;
-  }, { passive: true });
+  });
 
   wrapper.addEventListener("mouseleave", () => {
     mouse.x = null;
     mouse.y = null;
-  }, { passive: true });
+  });
 
   // Hub positions (calculated dynamically from DOM)
   function getHubCoordinates() {
@@ -383,8 +312,8 @@ function initNeuralConstellation() {
     return hubs;
   }
 
-  // Optimized particle pool: 38 nodes (matches 30–40 target, ~74% fewer distance comparisons)
-  const PARTICLE_COUNT = 38;
+  // Particle pool
+  const PARTICLE_COUNT = 75;
   const particles = [];
 
   class Particle {
@@ -437,7 +366,7 @@ function initNeuralConstellation() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
       ctx.fillStyle = isLight ? `rgba(22, 163, 74, ${Math.min(1, this.alpha * 1.6)})` : (this.color + this.alpha + ")");
-      ctx.shadowBlur = isLight ? 3 : 5;
+      ctx.shadowBlur = isLight ? 4 : 7;
       ctx.shadowColor = isLight ? "#16a34a" : "#a3e635";
       ctx.fill();
       ctx.shadowBlur = 0;
@@ -446,8 +375,8 @@ function initNeuralConstellation() {
 
   function resize() {
     const rect = canvas.getBoundingClientRect();
-    width = rect.width;
-    height = rect.height;
+    width = rect.width || (canvas.parentElement ? canvas.parentElement.clientWidth : 800);
+    height = rect.height || 480;
 
     canvas.width = Math.floor(width * dpr);
     canvas.height = Math.floor(height * dpr);
@@ -465,8 +394,10 @@ function initNeuralConstellation() {
   let pulseTimer = 0;
 
   function render() {
-    animationFrameId = null;
-    if (!isVisible || document.hidden || prefersReducedMotion) return;
+    if (!isVisible) {
+      animationFrameId = requestAnimationFrame(render);
+      return;
+    }
 
     ctx.clearRect(0, 0, width, height);
     pulseTimer += 0.035;
@@ -573,52 +504,24 @@ function initNeuralConstellation() {
     animationFrameId = requestAnimationFrame(render);
   }
 
-  function startLoop() {
-    if (!animationFrameId && isVisible && !document.hidden && !prefersReducedMotion) {
-      animationFrameId = requestAnimationFrame(render);
-    }
-  }
-
-  function stopLoop() {
-    if (animationFrameId) {
-      cancelAnimationFrame(animationFrameId);
-      animationFrameId = null;
-    }
-  }
-
-  // IntersectionObserver: Pause when off-screen, resume when entering viewport
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       isVisible = entry.isIntersecting;
-      if (isVisible) {
-        startLoop();
-      } else {
-        stopLoop();
-      }
     });
   }, { threshold: 0.05 });
 
   observer.observe(wrapper);
 
-  // visibilitychange: Stop when tab is hidden, resume when active
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden) {
-      stopLoop();
-    } else if (isVisible) {
-      startLoop();
-    }
-  }, { passive: true });
-
-  resize();
-  if (prefersReducedMotion) {
+  setTimeout(() => {
+    resize();
     render();
-  }
-}
+  }, 100);
+})();
 
 /* =========================================================
    TECH STACK MIND MAP - CYBER DIGITAL RAIN OF PARTICLES
 ========================================================== */
-function initMindmapCyberRain() {
+(function initMindmapCyberRain() {
   const canvas = document.getElementById("mindmapRainCanvas");
   if (!canvas) return;
 
@@ -630,7 +533,7 @@ function initMindmapCyberRain() {
   let height = 0;
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
   let animationFrameId = null;
-  let isVisible = false;
+  let isVisible = true;
 
   // Track mouse within wrapper for interactive breeze
   const mouse = { x: null, y: null, active: false };
@@ -639,19 +542,17 @@ function initMindmapCyberRain() {
     mouse.x = e.clientX - rect.left;
     mouse.y = e.clientY - rect.top;
     mouse.active = true;
-  }, { passive: true });
-
+  });
   wrapper.addEventListener("mouseleave", () => {
     mouse.active = false;
     mouse.x = null;
     mouse.y = null;
-  }, { passive: true });
+  });
 
   function resize() {
     const rect = wrapper.getBoundingClientRect();
-    width = rect.width;
-    height = rect.height;
-    if (width === 0 || height === 0) return;
+    width = rect.width || wrapper.clientWidth || 1000;
+    height = rect.height || 600;
     canvas.width = Math.floor(width * dpr);
     canvas.height = Math.floor(height * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -675,8 +576,7 @@ function initMindmapCyberRain() {
     { rgb: "22, 163, 74" }    // Forest Green accent
   ];
 
-  // Optimized to 45 streams for silky 60 FPS without GPU drag
-  const PARTICLE_COUNT = 45;
+  const PARTICLE_COUNT = 75;
   const particles = [];
 
   class RainDrop {
@@ -688,21 +588,24 @@ function initMindmapCyberRain() {
       this.x = Math.random() * (width + 120) - 60;
       this.y = initRandomY ? Math.random() * (height || 700) : -20 - Math.random() * 40;
 
-      this.depth = Math.random();
-      this.size = 1.1 + this.depth * 1.5;
-      this.vy = 2.0 + this.depth * 2.8;
-      this.vx = 0.35 + this.depth * 0.45;
-      this.length = 10 + this.depth * 18;
-      this.baseAlpha = 0.28 + this.depth * 0.52;
+      // Multi-layer depth (small = slow & dim, large = fast & bright)
+      this.depth = Math.random(); // 0 (far) to 1 (near)
+      this.size = 1.1 + this.depth * 1.5; // 1.1px to 2.6px
+      this.vy = 2.0 + this.depth * 2.8; // 2.0 to 4.8 px/frame
+      this.vx = 0.35 + this.depth * 0.45; // slight natural rain slant (~10-15 degrees)
+      this.length = 10 + this.depth * 18; // length of streak tail (10px - 28px)
+      this.baseAlpha = 0.28 + this.depth * 0.52; // 0.28 to 0.80
       this.colorIndex = Math.floor(Math.random() * 5);
       this.wobble = Math.random() * Math.PI * 2;
       this.wobbleSpeed = 0.02 + Math.random() * 0.03;
     }
 
     update() {
+      // Wind wobble
       this.wobble += this.wobbleSpeed;
       const windDrift = Math.sin(this.wobble) * 0.25;
 
+      // Mouse interactive breeze / disturbance
       if (mouse.active && mouse.x !== null) {
         const dx = this.x - mouse.x;
         const dy = this.y - mouse.y;
@@ -717,6 +620,7 @@ function initMindmapCyberRain() {
       this.x += this.vx + windDrift;
       this.y += this.vy;
 
+      // Loop back to top when off-screen
       if (this.y > height + 30 || this.x > width + 60) {
         this.reset(false);
       }
@@ -727,9 +631,11 @@ function initMindmapCyberRain() {
       const color = palette[this.colorIndex].rgb;
       const alpha = isLight ? this.baseAlpha * 0.7 : this.baseAlpha;
 
+      // Tail end position
       const tailX = this.x - this.vx * (this.length / this.vy);
       const tailY = this.y - this.length;
 
+      // Gradient streamer tail
       const grad = ctx.createLinearGradient(tailX, tailY, this.x, this.y);
       grad.addColorStop(0, `rgba(${color}, 0)`);
       grad.addColorStop(0.65, `rgba(${color}, ${alpha * 0.4})`);
@@ -743,11 +649,13 @@ function initMindmapCyberRain() {
       ctx.lineCap = "round";
       ctx.stroke();
 
+      // Glowing head point
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(${color}, ${Math.min(alpha * 1.25, 1)})`;
       ctx.fill();
 
+      // Ambient halo on nearest particles
       if (this.depth > 0.6) {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size * 2.2, 0, Math.PI * 2);
@@ -765,10 +673,13 @@ function initMindmapCyberRain() {
   }
 
   function render() {
-    animationFrameId = null;
-    if (!isVisible || document.hidden || prefersReducedMotion) return;
+    if (!isVisible) {
+      animationFrameId = requestAnimationFrame(render);
+      return;
+    }
 
     ctx.clearRect(0, 0, width, height);
+
     const isLight = document.documentElement.dataset.theme === "light";
 
     for (let i = 0; i < particles.length; i++) {
@@ -780,52 +691,19 @@ function initMindmapCyberRain() {
     animationFrameId = requestAnimationFrame(render);
   }
 
-  function startLoop() {
-    if (!animationFrameId && isVisible && !document.hidden && !prefersReducedMotion) {
-      animationFrameId = requestAnimationFrame(render);
-    }
-  }
-
-  function stopLoop() {
-    if (animationFrameId) {
-      cancelAnimationFrame(animationFrameId);
-      animationFrameId = null;
-    }
-  }
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       isVisible = entry.isIntersecting;
-      if (isVisible) {
-        startLoop();
-      } else {
-        stopLoop();
-      }
     });
   }, { threshold: 0.05 });
-
   observer.observe(wrapper);
 
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden) {
-      stopLoop();
-    } else if (isVisible) {
-      startLoop();
-    }
-  }, { passive: true });
-
-  resize();
-  initParticles();
-  if (prefersReducedMotion) {
+  setTimeout(() => {
+    resize();
+    initParticles();
     render();
-  }
-}
-
-// Progressive bootstrapping: run secondary canvases during browser idle time
-runWhenIdle(() => {
-  initNeuralConstellation();
-  initMindmapCyberRain();
-});
+  }, 100);
+})();
 
 /* =========================================================
    CV DOWNLOAD MODAL & TOAST ALERT NOTIFICATION
@@ -956,6 +834,6 @@ if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || win
       if (reg.installing) {
         console.log('[SW] Ultra-fast caching active');
       }
-    }).catch(() => {});
+    }).catch(() => { });
   });
 }

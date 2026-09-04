@@ -7,7 +7,8 @@
   <meta name="description" content="Cherkaoui Abdessamad — Full Stack Web Developer & AI Engineer.">
   <meta name="theme-color" content="#0f1115">
   <title>Cherkaoui — Full Stack Developer & AI Engineer</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 
   <!-- Resource Hints for Ultra-Fast Sub-Millisecond Setup -->
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -17,14 +18,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- Preload Core Stylesheet -->
-  <link rel="preload" href="style.css?v=20260904_07" as="style">
-  <link rel="stylesheet" href="style.css?v=20260904_07">
+  <link rel="preload" href="style.css?v=20260904_08" as="style">
+  <link rel="stylesheet" href="style.css?v=20260904_08">
 
   <!-- Asynchronous Non-Blocking Fonts & Devicons -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload"
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap"
+    as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
   <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
   </noscript>
 
@@ -44,6 +49,7 @@
       --max: 1240px;
       --ease: cubic-bezier(.2, .8, .2, 1);
     }
+
     [data-theme="light"] {
       --bg: #f8fafc;
       --surface: #ffffff;
@@ -56,8 +62,15 @@
       --accent-rgb: 22, 163, 74;
       --btn-text: #ffffff;
     }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       background: var(--bg);
@@ -66,21 +79,111 @@
       overflow-x: hidden;
       text-rendering: optimizeSpeed;
     }
-    a { color: inherit; text-decoration: none; }
-    .progress { position: fixed; top: 0; left: 0; height: 2px; width: 0; background: var(--accent); z-index: 100; }
-    .nav { height: 76px; max-width: var(--max); margin: auto; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 40; }
-    .section { max-width: var(--max); margin: auto; padding: 130px 28px; }
-    .hero { min-height: calc(100vh - 76px); display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 60px; padding-top: 75px; }
-    .eyebrow { font: 500 10px "DM Mono", monospace; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); display: flex; gap: 10px; align-items: center; }
-    .pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
-    .hero-title { font-size: clamp(68px, 8.5vw, 120px); line-height: .84; letter-spacing: -.09em; margin: 28px 0 34px; font-weight: 800; }
-    .hero-title .line { display: block; }
-    .accent-text { color: var(--accent); }
-    .hero-text { max-width: 650px; color: var(--muted); font-size: 18px; line-height: 1.75; }
-    .hero-actions { display: flex; gap: 14px; margin-top: 31px; }
-    .button { padding: 16px 24px; border: 1px solid var(--line2); font: 13px "DM Mono", monospace; }
-    .button.primary { background: var(--accent); color: var(--btn-text) !important; font-weight: 600; }
-    .button.secondary { background: var(--surface); color: var(--text); }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 0;
+      background: var(--accent);
+      z-index: 100;
+    }
+
+    .nav {
+      height: 76px;
+      max-width: var(--max);
+      margin: auto;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 40;
+    }
+
+    .section {
+      max-width: var(--max);
+      margin: auto;
+      padding: 130px 28px;
+    }
+
+    .hero {
+      min-height: calc(100vh - 76px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 60px;
+      padding-top: 75px;
+    }
+
+    .eyebrow {
+      font: 500 10px "DM Mono", monospace;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .pulse {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .hero-title {
+      font-size: clamp(68px, 8.5vw, 120px);
+      line-height: .84;
+      letter-spacing: -.09em;
+      margin: 28px 0 34px;
+      font-weight: 800;
+    }
+
+    .hero-title .line {
+      display: block;
+    }
+
+    .accent-text {
+      color: var(--accent);
+    }
+
+    .hero-text {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      margin-top: 31px;
+    }
+
+    .button {
+      padding: 16px 24px;
+      border: 1px solid var(--line2);
+      font: 13px "DM Mono", monospace;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      color: var(--btn-text) !important;
+      font-weight: 600;
+    }
+
+    .button.secondary {
+      background: var(--surface);
+      color: var(--text);
+    }
   </style>
 </head>
 
@@ -91,12 +194,12 @@
   <div class="progress" id="progress"></div>
 
   <div class="scroll-decorations">
-    <svg class="decor-plane" viewBox="0 0 24 24" width="24" height="24" id="decorPlane">
+    <svg class="decor-plane" viewBox="0 0 24 24" id="decorPlane">
       <path d="M21 3L3 10.53L9.56 12.5L12.5 19.5L21 3Z" fill="none" stroke="var(--accent)" stroke-width="1.2"
         stroke-linejoin="round" />
       <path d="M21 3L9.56 12.5" fill="none" stroke="var(--accent)" stroke-width="1.2" stroke-linejoin="round" />
     </svg>
-    <svg class="decor-network" viewBox="0 0 100 150" width="100" height="150" id="decorNetwork1">
+    <svg class="decor-network" viewBox="0 0 100 150" id="decorNetwork1">
       <circle cx="20" cy="20" r="3" fill="var(--muted)" />
       <circle cx="80" cy="50" r="4" fill="var(--accent)" />
       <circle cx="30" cy="90" r="3" fill="var(--muted)" />
@@ -107,7 +210,7 @@
       <line x1="80" y1="50" x2="70" y2="130" stroke="var(--line2)" />
       <line x1="30" y1="90" x2="70" y2="130" stroke="var(--line2)" />
     </svg>
-    <svg class="decor-network" viewBox="0 0 100 150" width="100" height="150" id="decorNetwork2" style="top:60%;">
+    <svg class="decor-network" viewBox="0 0 100 150" id="decorNetwork2" style="top:60%;">
       <circle cx="50" cy="10" r="4" fill="var(--accent)" />
       <circle cx="90" cy="70" r="3" fill="var(--muted)" />
       <circle cx="20" cy="80" r="4" fill="var(--accent)" />
@@ -135,8 +238,7 @@
     </nav>
 
     <div class="nav-actions">
-      <a class="nav-cv-link magnetic cv-trigger" href="#cv-modal" data-cv-trigger
-        data-i18n="nav_cv">CV (PDF) ↓</a>
+      <a class="nav-cv-link magnetic cv-trigger" href="#cv-modal" data-cv-trigger data-i18n="nav_cv">CV (PDF) ↓</a>
       <a class="mini-contact magnetic" href="#contact" data-i18n="nav_contact">Contact <span>↗</span></a>
       <button class="theme-toggle" id="langToggle" aria-label="Toggle language">EN</button>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">◐</button>
@@ -152,8 +254,7 @@
           AI systems and intelligent automation.</p>
         <h1 class="hero-title">
           <span class="line" data-i18n="hero_title_1">I build</span>
-          <span class="line"><span
-              class="accent-text" data-i18n="hero_title_2">serious</span></span>
+          <span class="line"><span class="accent-text" data-i18n="hero_title_2">serious</span></span>
           <span class="line" data-i18n="hero_title_3">software.</span>
         </h1>
         <p class="hero-text" data-i18n="hero_text">
@@ -163,8 +264,8 @@
         <div class="hero-actions">
           <a class="button primary magnetic" href="#work" data-i18n="hero_btn_work">View selected work
             <span>↗</span></a>
-          <a class="button secondary magnetic cv-trigger" href="#cv-modal"
-            data-cv-trigger data-i18n="hero_btn_cv">Download CV (PDF) ↓</a>
+          <a class="button secondary magnetic cv-trigger" href="#cv-modal" data-cv-trigger
+            data-i18n="hero_btn_cv">Download CV (PDF) ↓</a>
           <a class="button secondary magnetic" href="#contact" data-i18n="hero_btn_contact">Let's talk</a>
         </div>
         <div class="hero-meta">
@@ -581,7 +682,7 @@
       <div class="mindmap-wrapper reveal">
         <canvas id="mindmapRainCanvas" class="mindmap-rain-canvas" aria-hidden="true"></canvas>
         <div class="scene">
-          <svg class="connections" viewBox="0 0 1536 1024" width="1536" height="1024" preserveAspectRatio="none" aria-hidden="true">
+          <svg class="connections" viewBox="0 0 1536 1024" preserveAspectRatio="none" aria-hidden="true">
             <path class="connection cyan-line" stroke-width="4"
               d="M 319 411 C 345 389, 352 292, 380 239 C 396 211, 420 197, 451 197 L 493 197" />
             <path class="connection purple-line" stroke-width="4" d="M 319 486 C 351 468, 380 450, 422 450 L 494 450" />
@@ -850,9 +951,11 @@
         <p data-i18n="contact_text">Open to full-stack projects, AI products, technical collaborations and serious
           experiments.</p>
         <div class="contact-actions">
-          <a class="button primary magnetic" href="https://mail.google.com/mail/?view=cm&fs=1&to=cherkaouiabdessamad9@gmail.com" target="_blank" rel="noopener noreferrer">cherkaouiabdessamad9@gmail.com ↗</a>
-          <a class="button secondary magnetic cv-trigger" href="#cv-modal"
-            data-cv-trigger data-i18n="hero_btn_cv">Download CV (PDF) ↓</a>
+          <a class="button primary magnetic"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=cherkaouiabdessamad9@gmail.com" target="_blank"
+            rel="noopener noreferrer">cherkaouiabdessamad9@gmail.com ↗</a>
+          <a class="button secondary magnetic cv-trigger" href="#cv-modal" data-cv-trigger
+            data-i18n="hero_btn_cv">Download CV (PDF) ↓</a>
           <a class="button secondary magnetic" href="#top" data-i18n="contact_btn">Back to top ↑</a>
         </div>
       </div>
@@ -863,7 +966,8 @@
     <span>© <span id="year"></span> Cherkaoui Abdessamad</span>
     <span data-i18n="footer_role">Full Stack · AI · Systems</span>
     <div>
-      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=cherkaouiabdessamad9@gmail.com" target="_blank" rel="noopener noreferrer">Email ↗</a>
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=cherkaouiabdessamad9@gmail.com" target="_blank"
+        rel="noopener noreferrer">Email ↗</a>
       <a href="https://github.com/Cherkaoui7" target="_blank" rel="noopener">GitHub ↗</a>
       <a href="https://www.linkedin.com/in/cherkaoui-abdessamad-750294212/" target="_blank" rel="noopener"
         aria-label="LinkedIn">LinkedIn ↗</a>
@@ -872,22 +976,25 @@
   </footer>
 
   <!-- CV Language Selection Modal (Alert Dialog) -->
-  <div class="cv-modal-backdrop" id="cvModalBackdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="cvModalTitle">
+  <div class="cv-modal-backdrop" id="cvModalBackdrop" aria-hidden="true" role="dialog" aria-modal="true"
+    aria-labelledby="cvModalTitle">
     <div class="cv-modal-box">
       <button class="cv-modal-close" id="cvModalClose" aria-label="Close dialog">✕</button>
       <div class="cv-modal-header">
         <span class="cv-modal-badge" data-i18n="cv_modal_badge">RESUME DOWNLOAD</span>
         <h3 class="cv-modal-title" id="cvModalTitle" data-i18n="cv_modal_title">Choose CV Language</h3>
-        <p class="cv-modal-desc" data-i18n="cv_modal_desc">Select which version of the curriculum vitae you would like to download:</p>
+        <p class="cv-modal-desc" data-i18n="cv_modal_desc">Select which version of the curriculum vitae you would like
+          to download:</p>
       </div>
       <div class="cv-modal-grid">
         <!-- French Option -->
         <button class="cv-card cv-card-fr" id="cvCardFr" type="button">
           <div class="cv-card-top">
-            <svg class="cv-flag-svg" viewBox="0 0 32 24" width="30" height="22" aria-hidden="true" style="border-radius:4px;box-shadow:0 1px 4px rgba(0,0,0,0.25);">
-              <rect width="10.66" height="24" fill="#002654"/>
-              <rect x="10.66" width="10.68" height="24" fill="#ffffff"/>
-              <rect x="21.34" width="10.66" height="24" fill="#ce1126"/>
+            <svg class="cv-flag-svg" viewBox="0 0 32 24" width="30" height="22" aria-hidden="true"
+              style="border-radius:4px;box-shadow:0 1px 4px rgba(0,0,0,0.25);">
+              <rect width="10.66" height="24" fill="#002654" />
+              <rect x="10.66" width="10.68" height="24" fill="#ffffff" />
+              <rect x="21.34" width="10.66" height="24" fill="#ce1126" />
             </svg>
             <span class="cv-tag">FR</span>
           </div>
@@ -904,14 +1011,17 @@
         <!-- English Option -->
         <button class="cv-card cv-card-en" id="cvCardEn" type="button">
           <div class="cv-card-top">
-            <svg class="cv-flag-svg" viewBox="0 0 60 30" width="30" height="22" preserveAspectRatio="none" aria-hidden="true" style="border-radius:4px;box-shadow:0 1px 4px rgba(0,0,0,0.25);overflow:hidden;">
-              <clipPath id="ukClip"><rect width="60" height="30" rx="4"/></clipPath>
+            <svg class="cv-flag-svg" viewBox="0 0 60 30" width="30" height="22" preserveAspectRatio="none"
+              aria-hidden="true" style="border-radius:4px;box-shadow:0 1px 4px rgba(0,0,0,0.25);overflow:hidden;">
+              <clipPath id="ukClip">
+                <rect width="60" height="30" rx="4" />
+              </clipPath>
               <g clip-path="url(#ukClip)">
-                <rect width="60" height="30" fill="#012169"/>
-                <path d="M0 0 L60 30 M60 0 L0 30" stroke="#ffffff" stroke-width="7"/>
-                <path d="M0 0 L60 30 M60 0 L0 30" stroke="#C8102E" stroke-width="4.5"/>
-                <path d="M30 0 v30 M0 15 h60" stroke="#ffffff" stroke-width="11"/>
-                <path d="M30 0 v30 M0 15 h60" stroke="#C8102E" stroke-width="7"/>
+                <rect width="60" height="30" fill="#012169" />
+                <path d="M0 0 L60 30 M60 0 L0 30" stroke="#ffffff" stroke-width="7" />
+                <path d="M0 0 L60 30 M60 0 L0 30" stroke="#C8102E" stroke-width="4.5" />
+                <path d="M30 0 v30 M0 15 h60" stroke="#ffffff" stroke-width="11" />
+                <path d="M30 0 v30 M0 15 h60" stroke="#C8102E" stroke-width="7" />
               </g>
             </svg>
             <span class="cv-tag">EN</span>
@@ -939,8 +1049,8 @@
     <div class="cv-toast-progress"></div>
   </div>
 
-  <script src="lang.js?v=20260904_07" defer></script>
-  <script src="script.js?v=20260904_07" defer></script>
+  <script src="lang.js?v=20260904_08" defer></script>
+  <script src="script.js?v=20260904_08" defer></script>
 </body>
 
 </html>
