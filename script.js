@@ -789,8 +789,8 @@ updateTranslations();
   if (cardFr) {
     cardFr.addEventListener("click", () => {
       triggerDownload(
-        "assets/CV professionnel Full-stack Abdessamad Cherkaoui.pdf",
-        "CV professionnel Full-stack Abdessamad Cherkaoui.pdf",
+        "assets/CV Abdessamad Cherkaoui – Développeur Web Full-Stack.pdf",
+        "CV Abdessamad Cherkaoui – Développeur Web Full-Stack.pdf",
         "fr"
       );
     });
