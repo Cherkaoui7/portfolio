@@ -355,11 +355,12 @@ updateTranslations();
     }
 
     draw() {
+      const isLight = document.documentElement.dataset.theme === "light";
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.fillStyle = this.color + this.alpha + ")";
-      ctx.shadowBlur = 7;
-      ctx.shadowColor = "#a3e635";
+      ctx.fillStyle = isLight ? `rgba(22, 163, 74, ${Math.min(1, this.alpha * 1.6)})` : (this.color + this.alpha + ")");
+      ctx.shadowBlur = isLight ? 4 : 7;
+      ctx.shadowColor = isLight ? "#16a34a" : "#a3e635";
       ctx.fill();
       ctx.shadowBlur = 0;
     }
@@ -394,6 +395,7 @@ updateTranslations();
     ctx.clearRect(0, 0, width, height);
     pulseTimer += 0.035;
 
+    const isLight = document.documentElement.dataset.theme === "light";
     const hubs = getHubCoordinates();
     const maxDist = 110;
     const pCount = particles.length;
@@ -415,8 +417,8 @@ updateTranslations();
           ctx.beginPath();
           ctx.moveTo(p1.x, p1.y);
           ctx.lineTo(p2.x, p2.y);
-          ctx.strokeStyle = `rgba(163, 230, 53, ${alpha})`;
-          ctx.lineWidth = 0.85;
+          ctx.strokeStyle = isLight ? `rgba(22, 163, 74, ${alpha * 1.6})` : `rgba(163, 230, 53, ${alpha})`;
+          ctx.lineWidth = isLight ? 1 : 0.85;
           ctx.stroke();
         }
       }
@@ -430,8 +432,8 @@ updateTranslations();
           ctx.beginPath();
           ctx.moveTo(p1.x, p1.y);
           ctx.lineTo(mouse.x, mouse.y);
-          ctx.strokeStyle = `rgba(204, 255, 0, ${alpha})`;
-          ctx.lineWidth = 1;
+          ctx.strokeStyle = isLight ? `rgba(21, 128, 61, ${alpha * 1.6})` : `rgba(204, 255, 0, ${alpha})`;
+          ctx.lineWidth = isLight ? 1.2 : 1;
           ctx.stroke();
         }
       }
@@ -449,8 +451,8 @@ updateTranslations();
           ctx.beginPath();
           ctx.moveTo(hub.x, hub.y);
           ctx.lineTo(p.x, p.y);
-          ctx.strokeStyle = `rgba(204, 255, 0, ${alpha})`;
-          ctx.lineWidth = 1.1;
+          ctx.strokeStyle = isLight ? `rgba(21, 128, 61, ${alpha * 1.5})` : `rgba(204, 255, 0, ${alpha})`;
+          ctx.lineWidth = isLight ? 1.2 : 1.1;
           ctx.stroke();
         }
       });
@@ -467,17 +469,24 @@ updateTranslations();
         ctx.beginPath();
         ctx.moveTo(hub.x, hub.y);
         ctx.lineTo(x2, y2);
-        ctx.strokeStyle = "rgba(204, 255, 0, 0.45)";
+        ctx.strokeStyle = isLight ? "rgba(22, 163, 74, 0.6)" : "rgba(204, 255, 0, 0.45)";
         ctx.lineWidth = 1;
         ctx.stroke();
       }
 
       // Outer radial glow
       const glowGrad = ctx.createRadialGradient(hub.x, hub.y, 2, hub.x, hub.y, 48);
-      glowGrad.addColorStop(0, "rgba(255, 255, 255, 0.95)");
-      glowGrad.addColorStop(0.25, "rgba(204, 255, 0, 0.65)");
-      glowGrad.addColorStop(0.6, "rgba(163, 230, 53, 0.18)");
-      glowGrad.addColorStop(1, "rgba(163, 230, 53, 0)");
+      if (isLight) {
+        glowGrad.addColorStop(0, "rgba(22, 163, 74, 0.9)");
+        glowGrad.addColorStop(0.25, "rgba(34, 197, 94, 0.5)");
+        glowGrad.addColorStop(0.6, "rgba(22, 163, 74, 0.15)");
+        glowGrad.addColorStop(1, "rgba(22, 163, 74, 0)");
+      } else {
+        glowGrad.addColorStop(0, "rgba(255, 255, 255, 0.95)");
+        glowGrad.addColorStop(0.25, "rgba(204, 255, 0, 0.65)");
+        glowGrad.addColorStop(0.6, "rgba(163, 230, 53, 0.18)");
+        glowGrad.addColorStop(1, "rgba(163, 230, 53, 0)");
+      }
 
       ctx.beginPath();
       ctx.arc(hub.x, hub.y, 48, 0, Math.PI * 2);
@@ -501,5 +510,194 @@ updateTranslations();
     render();
   }, 100);
 })();
+
+/* =========================================================
+   TECH STACK MIND MAP - CYBER DIGITAL RAIN OF PARTICLES
+========================================================== */
+(function initMindmapCyberRain() {
+  const canvas = document.getElementById("mindmapRainCanvas");
+  if (!canvas) return;
+
+  const ctx = canvas.getContext("2d");
+  const wrapper = canvas.closest(".mindmap-wrapper");
+  if (!wrapper) return;
+
+  let width = 0;
+  let height = 0;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  let animationFrameId = null;
+  let isVisible = true;
+
+  // Track mouse within wrapper for interactive breeze
+  const mouse = { x: null, y: null, active: false };
+  wrapper.addEventListener("mousemove", (e) => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+    mouse.active = true;
+  });
+  wrapper.addEventListener("mouseleave", () => {
+    mouse.active = false;
+    mouse.x = null;
+    mouse.y = null;
+  });
+
+  function resize() {
+    const rect = wrapper.getBoundingClientRect();
+    width = rect.width;
+    height = rect.height;
+    if (width === 0 || height === 0) return;
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  window.addEventListener("resize", resize, { passive: true });
+
+  // 5 Theme branch color definitions
+  const THEME_COLORS_DARK = [
+    { rgb: "10, 186, 255" },  // Neon Cyan (Frontend)
+    { rgb: "174, 80, 255" },  // Neon Purple (Backend)
+    { rgb: "19, 217, 209" },  // Turquoise (Database)
+    { rgb: "255, 159, 0" },   // Amber (Core)
+    { rgb: "216, 255, 77" }   // Lime accent
+  ];
+
+  const THEME_COLORS_LIGHT = [
+    { rgb: "2, 132, 199" },   // Ocean Blue (Frontend)
+    { rgb: "147, 51, 234" },  // Royal Purple (Backend)
+    { rgb: "5, 150, 105" },   // Emerald (Database)
+    { rgb: "217, 119, 6" },   // Warm Amber (Core)
+    { rgb: "22, 163, 74" }    // Forest Green accent
+  ];
+
+  const PARTICLE_COUNT = 75;
+  const particles = [];
+
+  class RainDrop {
+    constructor(initRandomY = true) {
+      this.reset(initRandomY);
+    }
+
+    reset(initRandomY = false) {
+      this.x = Math.random() * (width + 120) - 60;
+      this.y = initRandomY ? Math.random() * (height || 700) : -20 - Math.random() * 40;
+
+      // Multi-layer depth (small = slow & dim, large = fast & bright)
+      this.depth = Math.random(); // 0 (far) to 1 (near)
+      this.size = 1.1 + this.depth * 1.5; // 1.1px to 2.6px
+      this.vy = 2.0 + this.depth * 2.8; // 2.0 to 4.8 px/frame
+      this.vx = 0.35 + this.depth * 0.45; // slight natural rain slant (~10-15 degrees)
+      this.length = 10 + this.depth * 18; // length of streak tail (10px - 28px)
+      this.baseAlpha = 0.28 + this.depth * 0.52; // 0.28 to 0.80
+      this.colorIndex = Math.floor(Math.random() * 5);
+      this.wobble = Math.random() * Math.PI * 2;
+      this.wobbleSpeed = 0.02 + Math.random() * 0.03;
+    }
+
+    update() {
+      // Wind wobble
+      this.wobble += this.wobbleSpeed;
+      const windDrift = Math.sin(this.wobble) * 0.25;
+
+      // Mouse interactive breeze / disturbance
+      if (mouse.active && mouse.x !== null) {
+        const dx = this.x - mouse.x;
+        const dy = this.y - mouse.y;
+        const dist = Math.hypot(dx, dy);
+        if (dist < 120) {
+          const force = (1 - dist / 120) * 2.0;
+          this.x += (dx / dist) * force;
+          this.y += (dy / dist) * force * 0.5;
+        }
+      }
+
+      this.x += this.vx + windDrift;
+      this.y += this.vy;
+
+      // Loop back to top when off-screen
+      if (this.y > height + 30 || this.x > width + 60) {
+        this.reset(false);
+      }
+    }
+
+    draw(isLight) {
+      const palette = isLight ? THEME_COLORS_LIGHT : THEME_COLORS_DARK;
+      const color = palette[this.colorIndex].rgb;
+      const alpha = isLight ? this.baseAlpha * 0.7 : this.baseAlpha;
+
+      // Tail end position
+      const tailX = this.x - this.vx * (this.length / this.vy);
+      const tailY = this.y - this.length;
+
+      // Gradient streamer tail
+      const grad = ctx.createLinearGradient(tailX, tailY, this.x, this.y);
+      grad.addColorStop(0, `rgba(${color}, 0)`);
+      grad.addColorStop(0.65, `rgba(${color}, ${alpha * 0.4})`);
+      grad.addColorStop(1, `rgba(${color}, ${alpha * 0.95})`);
+
+      ctx.beginPath();
+      ctx.moveTo(tailX, tailY);
+      ctx.lineTo(this.x, this.y);
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = this.size * 0.9;
+      ctx.lineCap = "round";
+      ctx.stroke();
+
+      // Glowing head point
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${color}, ${Math.min(alpha * 1.25, 1)})`;
+      ctx.fill();
+
+      // Ambient halo on nearest particles
+      if (this.depth > 0.6) {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size * 2.2, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${color}, ${alpha * 0.22})`;
+        ctx.fill();
+      }
+    }
+  }
+
+  function initParticles() {
+    particles.length = 0;
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      particles.push(new RainDrop(true));
+    }
+  }
+
+  function render() {
+    if (!isVisible) {
+      animationFrameId = requestAnimationFrame(render);
+      return;
+    }
+
+    ctx.clearRect(0, 0, width, height);
+
+    const isLight = document.documentElement.dataset.theme === "light";
+
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      p.update();
+      p.draw(isLight);
+    }
+
+    animationFrameId = requestAnimationFrame(render);
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      isVisible = entry.isIntersecting;
+    });
+  }, { threshold: 0.05 });
+  observer.observe(wrapper);
+
+  setTimeout(() => {
+    resize();
+    initParticles();
+    render();
+  }, 100);
+})();
+
 
 
