@@ -1,10 +1,10 @@
 // Ultra-fast Service Worker for 1ms Cache Retrieval
-const CACHE_NAME = 'cherkaoui-cache-v2';
+const CACHE_NAME = 'cherkaoui-cache-v3';
 const PRECACHE_ASSETS = [
   './',
   './index.html',
   './style.css?v=20260904_06',
-  './lang.js?v=20260904_04',
+  './lang.js?v=20260904_05',
   './script.js?v=20260904_05'
 ];
 
