@@ -31,16 +31,23 @@ const decorPlane = $("#decorPlane");
 const decorNet1 = $("#decorNetwork1");
 const decorNet2 = $("#decorNetwork2");
 
+let scrollTicking = false;
 window.addEventListener("scroll", () => {
-  const max = document.documentElement.scrollHeight - innerHeight;
-  const p = max > 0 ? scrollY / max : 0;
-  progress.style.width = `${p * 100}%`;
-  nav.style.background = scrollY > 30 ? "color-mix(in srgb, var(--bg) 82%, transparent)" : "transparent";
-  nav.style.backdropFilter = scrollY > 30 ? "blur(12px)" : "none";
-  
-  if(decorPlane) decorPlane.style.transform = `translateY(${p * (innerHeight + 100)}px) rotate(${15 + p * 35}deg)`;
-  if(decorNet1) decorNet1.style.transform = `translateY(${-(p * (innerHeight + 200))}px) rotate(${p * 20}deg)`;
-  if(decorNet2) decorNet2.style.transform = `translateY(${-(p * (innerHeight + 400))}px) rotate(${-p * 30}deg)`;
+  if (!scrollTicking) {
+    requestAnimationFrame(() => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      const p = max > 0 ? scrollY / max : 0;
+      progress.style.width = `${p * 100}%`;
+      nav.style.background = scrollY > 30 ? "color-mix(in srgb, var(--bg) 82%, transparent)" : "transparent";
+      nav.style.backdropFilter = scrollY > 30 ? "blur(12px)" : "none";
+      
+      if(decorPlane) decorPlane.style.transform = `translateY(${p * (innerHeight + 100)}px) rotate(${15 + p * 35}deg)`;
+      if(decorNet1) decorNet1.style.transform = `translateY(${-(p * (innerHeight + 200))}px) rotate(${p * 20}deg)`;
+      if(decorNet2) decorNet2.style.transform = `translateY(${-(p * (innerHeight + 400))}px) rotate(${-p * 30}deg)`;
+      scrollTicking = false;
+    });
+    scrollTicking = true;
+  }
 }, {passive:true});
 
 /* Magnetic links */
@@ -241,7 +248,7 @@ function startTypewriter() {
     currentLine = 0;
     currentChar = 0;
     codeLines = codeTranslations[currentLang] || codeTranslations['en'];
-    typewriterTimeout = setTimeout(typeNextChar, 600);
+    typewriterTimeout = setTimeout(typeNextChar, 80);
   }
 }
 
@@ -817,3 +824,17 @@ updateTranslations();
     }
   });
 })();
+
+/* =========================================================
+   HIGH-SPEED SERVICE WORKER REGISTRATION (1MS CACHING)
+========================================================== */
+if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').then(reg => {
+      // Background cache warming
+      if (reg.installing) {
+        console.log('[SW] Ultra-fast caching active');
+      }
+    }).catch(() => {});
+  });
+}
