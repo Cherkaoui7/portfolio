@@ -83,10 +83,13 @@ a {
 .cursor-dot,
 .cursor-ring {
   position: fixed;
+  top: 0;
+  left: 0;
   pointer-events: none;
   z-index: 100;
-  transform: translate(-50%, -50%);
-  opacity: 0
+  transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
+  will-change: transform;
+  opacity: 0;
 }
 
 .cursor-dot {
@@ -3775,4 +3778,30 @@ body.modal-open {
 
 [data-theme="light"] .cv-toast-desc {
   color: #475569;
+}
+
+/* =========================================================
+   ACCESSIBILITY & PERFORMANCE: PREFERS-REDUCED-MOTION
+========================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .pulse,
+  .radar-sweep,
+  .orb-ring,
+  .floating-label,
+  .decor-plane,
+  .decor-network {
+    animation: none !important;
+  }
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
 }

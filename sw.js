@@ -1,11 +1,11 @@
 // Ultra-fast Service Worker for 1ms Cache Retrieval
-const CACHE_NAME = 'cherkaoui-cache-v4';
+const CACHE_NAME = 'cherkaoui-cache-v5';
 const PRECACHE_ASSETS = [
   './',
   './index.html',
-  './style.css?v=20260904_06',
-  './lang.js?v=20260904_06',
-  './script.js?v=20260904_06'
+  './style.css?v=20260904_07',
+  './lang.js?v=20260904_07',
+  './script.js?v=20260904_07'
 ];
 
 self.addEventListener('install', (event) => {

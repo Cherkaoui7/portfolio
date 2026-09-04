@@ -50,55 +50,99 @@ window.addEventListener("scroll", () => {
   }
 }, {passive:true});
 
-/* Magnetic links */
+/* Magnetic links — passive & RAF throttled */
 $$(".magnetic").forEach(el => {
+  let magTicking = false;
   el.addEventListener("pointermove", e => {
-    const r = el.getBoundingClientRect();
-    const x = (e.clientX - r.left - r.width/2) * .18;
-    const y = (e.clientY - r.top - r.height/2) * .18;
-    el.style.transform = `translate(${x}px,${y}px)`;
-  });
-  el.addEventListener("pointerleave", () => el.style.transform = "");
+    if (!magTicking) {
+      requestAnimationFrame(() => {
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left - r.width / 2) * 0.18;
+        const y = (e.clientY - r.top - r.height / 2) * 0.18;
+        el.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        magTicking = false;
+      });
+      magTicking = true;
+    }
+  }, { passive: true });
+  el.addEventListener("pointerleave", () => {
+    el.style.transform = "";
+  }, { passive: true });
 });
 
-/* Cursor */
+/* Cursor — Hardware-Accelerated via GPU Transforms & Auto-Sleeping Loop */
 const dot = $(".cursor-dot"), ring = $(".cursor-ring");
-if (matchMedia("(pointer:fine)").matches) {
+if (matchMedia("(pointer:fine)").matches && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
   document.body.classList.add("cursor-ready");
-  let mx=0,my=0,rx=0,ry=0;
-  addEventListener("pointermove", e => { mx=e.clientX; my=e.clientY; dot.style.left=mx+"px"; dot.style.top=my+"px"; });
+  let mx = -100, my = -100, rx = -100, ry = -100;
+  let cursorActive = false;
+
   function cursorLoop() {
-    rx += (mx-rx)*.14; ry += (my-ry)*.14;
-    ring.style.left=rx+"px"; ring.style.top=ry+"px";
-    requestAnimationFrame(cursorLoop);
+    rx += (mx - rx) * 0.16;
+    ry += (my - ry) * 0.16;
+    ring.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
+
+    // Sleep RAF when ring catches up to mouse within 0.1px threshold
+    if (Math.abs(mx - rx) > 0.1 || Math.abs(my - ry) > 0.1) {
+      requestAnimationFrame(cursorLoop);
+    } else {
+      cursorActive = false;
+    }
   }
-  cursorLoop();
+
+  window.addEventListener("pointermove", e => {
+    mx = e.clientX;
+    my = e.clientY;
+    dot.style.transform = `translate3d(${mx}px, ${my}px, 0) translate(-50%, -50%)`;
+    if (!cursorActive) {
+      cursorActive = true;
+      requestAnimationFrame(cursorLoop);
+    }
+  }, { passive: true });
+
   $$("a,button,.project,.skill").forEach(el => {
-    el.addEventListener("mouseenter",()=>document.body.classList.add("cursor-hover"));
-    el.addEventListener("mouseleave",()=>document.body.classList.remove("cursor-hover"));
+    el.addEventListener("mouseenter", () => document.body.classList.add("cursor-hover"), { passive: true });
+    el.addEventListener("mouseleave", () => document.body.classList.remove("cursor-hover"), { passive: true });
   });
 }
 
-/* Lightweight 3D tilt — disabled on touch screens */
-if (matchMedia("(pointer:fine)").matches) {
+/* Lightweight 3D tilt — disabled on touch and reduced motion */
+if (matchMedia("(pointer:fine)").matches && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
   $$(".tilt").forEach(card => {
+    let tiltTicking = false;
     card.addEventListener("pointermove", e => {
-      const r=card.getBoundingClientRect();
-      const x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
-      card.style.transform=`perspective(1000px) rotateX(${-y*5}deg) rotateY(${x*7}deg) translateY(-3px)`;
-    });
-    card.addEventListener("pointerleave",()=>card.style.transform="");
+      if (!tiltTicking) {
+        requestAnimationFrame(() => {
+          const r = card.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5;
+          const y = (e.clientY - r.top) / r.height - 0.5;
+          card.style.transform = `perspective(1000px) rotateX(${-y * 5}deg) rotateY(${x * 7}deg) translate3d(0, -3px, 0)`;
+          tiltTicking = false;
+        });
+        tiltTicking = true;
+      }
+    }, { passive: true });
+    card.addEventListener("pointerleave", () => {
+      card.style.transform = "";
+    }, { passive: true });
   });
 }
 
-/* Hero parallax */
+/* Hero parallax — RAF throttled */
 const heroVisual = $("#heroVisual");
-if (heroVisual && matchMedia("(pointer:fine)").matches) {
-  addEventListener("pointermove", e => {
-    const x=(e.clientX-innerWidth/2)/innerWidth;
-    const y=(e.clientY-innerHeight/2)/innerHeight;
-    heroVisual.style.transform=`translate(${x*8}px,${y*6}px)`;
-  });
+if (heroVisual && matchMedia("(pointer:fine)").matches && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  let heroParallaxTicking = false;
+  window.addEventListener("pointermove", e => {
+    if (!heroParallaxTicking) {
+      requestAnimationFrame(() => {
+        const x = (e.clientX - innerWidth / 2) / innerWidth;
+        const y = (e.clientY - innerHeight / 2) / innerHeight;
+        heroVisual.style.transform = `translate3d(${x * 8}px, ${y * 6}px, 0)`;
+        heroParallaxTicking = false;
+      });
+      heroParallaxTicking = true;
+    }
+  }, { passive: true });
 }
 
 /* Count-up metrics */
@@ -252,13 +296,39 @@ function startTypewriter() {
   }
 }
 
+/* =========================================================
+   PERFORMANCE UTILITIES: IDLE & TASK SCHEDULING
+========================================================== */
+const runWhenIdle = (cb, timeout = 1200) => {
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(cb, { timeout });
+  } else {
+    setTimeout(cb, 40);
+  }
+};
+
+const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+let prefersReducedMotion = motionQuery.matches;
+motionQuery.addEventListener("change", e => {
+  prefersReducedMotion = e.matches;
+});
+
+// Pause typewriter when tab is hidden to save CPU
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    if (typewriterTimeout) clearTimeout(typewriterTimeout);
+  } else if (heroCode && currentLine < codeLines.length) {
+    typewriterTimeout = setTimeout(typeNextChar, 100);
+  }
+}, { passive: true });
+
 // Initial language load
 updateTranslations();
 
 /* =========================================================
    LIVE NEURAL PLEXUS CONSTELLATION CANVAS
 ========================================================== */
-(function initNeuralConstellation() {
+function initNeuralConstellation() {
   const canvas = document.getElementById("neuralCanvas");
   if (!canvas) return;
 
@@ -268,9 +338,10 @@ updateTranslations();
 
   let width = 0;
   let height = 0;
-  const dpr = window.devicePixelRatio || 1;
+  // Cap devicePixelRatio to 2 to eliminate 3x/4x GPU pixel fill penalties
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
   let animationFrameId = null;
-  let isVisible = true;
+  let isVisible = false;
 
   // Mouse tracking
   const mouse = { x: null, y: null, radius: 140 };
@@ -279,12 +350,12 @@ updateTranslations();
     const rect = canvas.getBoundingClientRect();
     mouse.x = e.clientX - rect.left;
     mouse.y = e.clientY - rect.top;
-  });
+  }, { passive: true });
 
   wrapper.addEventListener("mouseleave", () => {
     mouse.x = null;
     mouse.y = null;
-  });
+  }, { passive: true });
 
   // Hub positions (calculated dynamically from DOM)
   function getHubCoordinates() {
@@ -312,8 +383,8 @@ updateTranslations();
     return hubs;
   }
 
-  // Particle pool
-  const PARTICLE_COUNT = 75;
+  // Optimized particle pool: 38 nodes (matches 30–40 target, ~74% fewer distance comparisons)
+  const PARTICLE_COUNT = 38;
   const particles = [];
 
   class Particle {
@@ -366,7 +437,7 @@ updateTranslations();
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
       ctx.fillStyle = isLight ? `rgba(22, 163, 74, ${Math.min(1, this.alpha * 1.6)})` : (this.color + this.alpha + ")");
-      ctx.shadowBlur = isLight ? 4 : 7;
+      ctx.shadowBlur = isLight ? 3 : 5;
       ctx.shadowColor = isLight ? "#16a34a" : "#a3e635";
       ctx.fill();
       ctx.shadowBlur = 0;
@@ -380,7 +451,7 @@ updateTranslations();
 
     canvas.width = Math.floor(width * dpr);
     canvas.height = Math.floor(height * dpr);
-    ctx.scale(dpr, dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
     if (particles.length === 0) {
       for (let i = 0; i < PARTICLE_COUNT; i++) {
@@ -389,15 +460,13 @@ updateTranslations();
     }
   }
 
-  window.addEventListener("resize", resize);
+  window.addEventListener("resize", resize, { passive: true });
 
   let pulseTimer = 0;
 
   function render() {
-    if (!isVisible) {
-      animationFrameId = requestAnimationFrame(render);
-      return;
-    }
+    animationFrameId = null;
+    if (!isVisible || document.hidden || prefersReducedMotion) return;
 
     ctx.clearRect(0, 0, width, height);
     pulseTimer += 0.035;
@@ -504,24 +573,52 @@ updateTranslations();
     animationFrameId = requestAnimationFrame(render);
   }
 
+  function startLoop() {
+    if (!animationFrameId && isVisible && !document.hidden && !prefersReducedMotion) {
+      animationFrameId = requestAnimationFrame(render);
+    }
+  }
+
+  function stopLoop() {
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = null;
+    }
+  }
+
+  // IntersectionObserver: Pause when off-screen, resume when entering viewport
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       isVisible = entry.isIntersecting;
+      if (isVisible) {
+        startLoop();
+      } else {
+        stopLoop();
+      }
     });
   }, { threshold: 0.05 });
 
   observer.observe(wrapper);
 
-  setTimeout(() => {
-    resize();
+  // visibilitychange: Stop when tab is hidden, resume when active
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      stopLoop();
+    } else if (isVisible) {
+      startLoop();
+    }
+  }, { passive: true });
+
+  resize();
+  if (prefersReducedMotion) {
     render();
-  }, 100);
-})();
+  }
+}
 
 /* =========================================================
    TECH STACK MIND MAP - CYBER DIGITAL RAIN OF PARTICLES
 ========================================================== */
-(function initMindmapCyberRain() {
+function initMindmapCyberRain() {
   const canvas = document.getElementById("mindmapRainCanvas");
   if (!canvas) return;
 
@@ -533,7 +630,7 @@ updateTranslations();
   let height = 0;
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
   let animationFrameId = null;
-  let isVisible = true;
+  let isVisible = false;
 
   // Track mouse within wrapper for interactive breeze
   const mouse = { x: null, y: null, active: false };
@@ -542,12 +639,13 @@ updateTranslations();
     mouse.x = e.clientX - rect.left;
     mouse.y = e.clientY - rect.top;
     mouse.active = true;
-  });
+  }, { passive: true });
+
   wrapper.addEventListener("mouseleave", () => {
     mouse.active = false;
     mouse.x = null;
     mouse.y = null;
-  });
+  }, { passive: true });
 
   function resize() {
     const rect = wrapper.getBoundingClientRect();
@@ -577,7 +675,8 @@ updateTranslations();
     { rgb: "22, 163, 74" }    // Forest Green accent
   ];
 
-  const PARTICLE_COUNT = 75;
+  // Optimized to 45 streams for silky 60 FPS without GPU drag
+  const PARTICLE_COUNT = 45;
   const particles = [];
 
   class RainDrop {
@@ -589,24 +688,21 @@ updateTranslations();
       this.x = Math.random() * (width + 120) - 60;
       this.y = initRandomY ? Math.random() * (height || 700) : -20 - Math.random() * 40;
 
-      // Multi-layer depth (small = slow & dim, large = fast & bright)
-      this.depth = Math.random(); // 0 (far) to 1 (near)
-      this.size = 1.1 + this.depth * 1.5; // 1.1px to 2.6px
-      this.vy = 2.0 + this.depth * 2.8; // 2.0 to 4.8 px/frame
-      this.vx = 0.35 + this.depth * 0.45; // slight natural rain slant (~10-15 degrees)
-      this.length = 10 + this.depth * 18; // length of streak tail (10px - 28px)
-      this.baseAlpha = 0.28 + this.depth * 0.52; // 0.28 to 0.80
+      this.depth = Math.random();
+      this.size = 1.1 + this.depth * 1.5;
+      this.vy = 2.0 + this.depth * 2.8;
+      this.vx = 0.35 + this.depth * 0.45;
+      this.length = 10 + this.depth * 18;
+      this.baseAlpha = 0.28 + this.depth * 0.52;
       this.colorIndex = Math.floor(Math.random() * 5);
       this.wobble = Math.random() * Math.PI * 2;
       this.wobbleSpeed = 0.02 + Math.random() * 0.03;
     }
 
     update() {
-      // Wind wobble
       this.wobble += this.wobbleSpeed;
       const windDrift = Math.sin(this.wobble) * 0.25;
 
-      // Mouse interactive breeze / disturbance
       if (mouse.active && mouse.x !== null) {
         const dx = this.x - mouse.x;
         const dy = this.y - mouse.y;
@@ -621,7 +717,6 @@ updateTranslations();
       this.x += this.vx + windDrift;
       this.y += this.vy;
 
-      // Loop back to top when off-screen
       if (this.y > height + 30 || this.x > width + 60) {
         this.reset(false);
       }
@@ -632,11 +727,9 @@ updateTranslations();
       const color = palette[this.colorIndex].rgb;
       const alpha = isLight ? this.baseAlpha * 0.7 : this.baseAlpha;
 
-      // Tail end position
       const tailX = this.x - this.vx * (this.length / this.vy);
       const tailY = this.y - this.length;
 
-      // Gradient streamer tail
       const grad = ctx.createLinearGradient(tailX, tailY, this.x, this.y);
       grad.addColorStop(0, `rgba(${color}, 0)`);
       grad.addColorStop(0.65, `rgba(${color}, ${alpha * 0.4})`);
@@ -650,13 +743,11 @@ updateTranslations();
       ctx.lineCap = "round";
       ctx.stroke();
 
-      // Glowing head point
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(${color}, ${Math.min(alpha * 1.25, 1)})`;
       ctx.fill();
 
-      // Ambient halo on nearest particles
       if (this.depth > 0.6) {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size * 2.2, 0, Math.PI * 2);
@@ -674,13 +765,10 @@ updateTranslations();
   }
 
   function render() {
-    if (!isVisible) {
-      animationFrameId = requestAnimationFrame(render);
-      return;
-    }
+    animationFrameId = null;
+    if (!isVisible || document.hidden || prefersReducedMotion) return;
 
     ctx.clearRect(0, 0, width, height);
-
     const isLight = document.documentElement.dataset.theme === "light";
 
     for (let i = 0; i < particles.length; i++) {
@@ -692,19 +780,52 @@ updateTranslations();
     animationFrameId = requestAnimationFrame(render);
   }
 
+  function startLoop() {
+    if (!animationFrameId && isVisible && !document.hidden && !prefersReducedMotion) {
+      animationFrameId = requestAnimationFrame(render);
+    }
+  }
+
+  function stopLoop() {
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = null;
+    }
+  }
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       isVisible = entry.isIntersecting;
+      if (isVisible) {
+        startLoop();
+      } else {
+        stopLoop();
+      }
     });
   }, { threshold: 0.05 });
+
   observer.observe(wrapper);
 
-  setTimeout(() => {
-    resize();
-    initParticles();
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      stopLoop();
+    } else if (isVisible) {
+      startLoop();
+    }
+  }, { passive: true });
+
+  resize();
+  initParticles();
+  if (prefersReducedMotion) {
     render();
-  }, 100);
-})();
+  }
+}
+
+// Progressive bootstrapping: run secondary canvases during browser idle time
+runWhenIdle(() => {
+  initNeuralConstellation();
+  initMindmapCyberRain();
+});
 
 /* =========================================================
    CV DOWNLOAD MODAL & TOAST ALERT NOTIFICATION
