@@ -13,7 +13,7 @@
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
-  <link rel="stylesheet" href="style.css?v=20260904_04">
+  <link rel="stylesheet" href="style.css?v=20260904_05">
 </head>
 
 <body>
@@ -67,8 +67,8 @@
     </nav>
 
     <div class="nav-actions">
-      <a class="nav-cv-link magnetic" href="assets/ABDESSAMAD CHERKAOUI (2).pdf" download="Cherkaoui_Resume.pdf"
-        target="_blank" data-i18n="nav_cv">CV (PDF) ↓</a>
+      <a class="nav-cv-link magnetic cv-trigger" href="#cv-modal" data-cv-trigger
+        data-i18n="nav_cv">CV (PDF) ↓</a>
       <a class="mini-contact magnetic" href="#contact" data-i18n="nav_contact">Contact <span>↗</span></a>
       <button class="theme-toggle" id="langToggle" aria-label="Toggle language">EN</button>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">◐</button>
@@ -95,8 +95,8 @@
         <div class="hero-actions reveal" style="--delay:.42s">
           <a class="button primary magnetic" href="#work" data-i18n="hero_btn_work">View selected work
             <span>↗</span></a>
-          <a class="button secondary magnetic" href="assets/ABDESSAMAD CHERKAOUI (2).pdf"
-            download="Cherkaoui_Resume.pdf" target="_blank" data-i18n="hero_btn_cv">Download CV (PDF) ↓</a>
+          <a class="button secondary magnetic cv-trigger" href="#cv-modal"
+            data-cv-trigger data-i18n="hero_btn_cv">Download CV (PDF) ↓</a>
           <a class="button secondary magnetic" href="#contact" data-i18n="hero_btn_contact">Let's talk</a>
         </div>
         <div class="hero-meta reveal" style="--delay:.50s">
@@ -783,8 +783,8 @@
           experiments.</p>
         <div class="contact-actions">
           <a class="button primary magnetic" href="https://mail.google.com/mail/?view=cm&fs=1&to=cherkaouiabdessamad9@gmail.com" target="_blank" rel="noopener noreferrer">cherkaouiabdessamad9@gmail.com ↗</a>
-          <a class="button secondary magnetic" href="assets/ABDESSAMAD CHERKAOUI (2).pdf"
-            download="Cherkaoui_Resume.pdf" target="_blank" data-i18n="hero_btn_cv">Download CV (PDF) ↓</a>
+          <a class="button secondary magnetic cv-trigger" href="#cv-modal"
+            data-cv-trigger data-i18n="hero_btn_cv">Download CV (PDF) ↓</a>
           <a class="button secondary magnetic" href="#top" data-i18n="contact_btn">Back to top ↑</a>
         </div>
       </div>
@@ -799,14 +799,80 @@
       <a href="https://github.com/Cherkaoui7" target="_blank" rel="noopener">GitHub ↗</a>
       <a href="https://www.linkedin.com/in/cherkaoui-abdessamad-750294212/" target="_blank" rel="noopener"
         aria-label="LinkedIn">LinkedIn ↗</a>
-      <a href="assets/ABDESSAMAD CHERKAOUI (2).pdf" download="Cherkaoui_Resume.pdf" target="_blank"
-        data-i18n="footer_cv">Resume
-        (PDF) ↗</a>
+      <a class="cv-trigger" href="#cv-modal" data-cv-trigger data-i18n="footer_cv">Resume (PDF) ↗</a>
     </div>
   </footer>
 
-  <script src="lang.js?v=20260904_02"></script>
-  <script src="script.js?v=20260904_03"></script>
+  <!-- CV Language Selection Modal (Alert Dialog) -->
+  <div class="cv-modal-backdrop" id="cvModalBackdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="cvModalTitle">
+    <div class="cv-modal-box">
+      <button class="cv-modal-close" id="cvModalClose" aria-label="Close dialog">✕</button>
+      <div class="cv-modal-header">
+        <span class="cv-modal-badge" data-i18n="cv_modal_badge">RESUME DOWNLOAD</span>
+        <h3 class="cv-modal-title" id="cvModalTitle" data-i18n="cv_modal_title">Choose CV Language</h3>
+        <p class="cv-modal-desc" data-i18n="cv_modal_desc">Select which version of the curriculum vitae you would like to download:</p>
+      </div>
+      <div class="cv-modal-grid">
+        <!-- French Option -->
+        <button class="cv-card cv-card-fr" id="cvCardFr" type="button">
+          <div class="cv-card-top">
+            <svg class="cv-flag-svg" viewBox="0 0 32 24" width="30" height="22" aria-hidden="true" style="border-radius:4px;box-shadow:0 1px 4px rgba(0,0,0,0.25);">
+              <rect width="10.66" height="24" fill="#002654"/>
+              <rect x="10.66" width="10.68" height="24" fill="#ffffff"/>
+              <rect x="21.34" width="10.66" height="24" fill="#ce1126"/>
+            </svg>
+            <span class="cv-tag">FR</span>
+          </div>
+          <div class="cv-card-body">
+            <span class="cv-card-ver" data-i18n="cv_fr_title">Version Française</span>
+            <h4 class="cv-card-name" data-i18n="cv_fr_file">CV professionnel Full-stack Abdessamad Cherkaoui</h4>
+            <span class="cv-card-meta" data-i18n="cv_fr_meta">PDF • 114 KB • Format Français</span>
+          </div>
+          <div class="cv-card-footer">
+            <span class="cv-dl-btn" data-i18n="cv_download_btn">Download PDF ↓</span>
+          </div>
+        </button>
+
+        <!-- English Option -->
+        <button class="cv-card cv-card-en" id="cvCardEn" type="button">
+          <div class="cv-card-top">
+            <svg class="cv-flag-svg" viewBox="0 0 60 30" width="30" height="22" preserveAspectRatio="none" aria-hidden="true" style="border-radius:4px;box-shadow:0 1px 4px rgba(0,0,0,0.25);overflow:hidden;">
+              <clipPath id="ukClip"><rect width="60" height="30" rx="4"/></clipPath>
+              <g clip-path="url(#ukClip)">
+                <rect width="60" height="30" fill="#012169"/>
+                <path d="M0 0 L60 30 M60 0 L0 30" stroke="#ffffff" stroke-width="7"/>
+                <path d="M0 0 L60 30 M60 0 L0 30" stroke="#C8102E" stroke-width="4.5"/>
+                <path d="M30 0 v30 M0 15 h60" stroke="#ffffff" stroke-width="11"/>
+                <path d="M30 0 v30 M0 15 h60" stroke="#C8102E" stroke-width="7"/>
+              </g>
+            </svg>
+            <span class="cv-tag">EN</span>
+          </div>
+          <div class="cv-card-body">
+            <span class="cv-card-ver" data-i18n="cv_en_title">English Version</span>
+            <h4 class="cv-card-name" data-i18n="cv_en_file">Professional Full-stack cv Abdessamad Cherkaoui</h4>
+            <span class="cv-card-meta" data-i18n="cv_en_meta">PDF • 62 KB • International Format</span>
+          </div>
+          <div class="cv-card-footer">
+            <span class="cv-dl-btn" data-i18n="cv_download_btn">Download PDF ↓</span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CV Download Toast Alert Notification -->
+  <div class="cv-toast" id="cvToast" role="alert" aria-live="polite">
+    <div class="cv-toast-icon">⚡</div>
+    <div class="cv-toast-content">
+      <div class="cv-toast-title" id="cvToastTitle">Download Started</div>
+      <div class="cv-toast-desc" id="cvToastDesc">Your CV is downloading now...</div>
+    </div>
+    <div class="cv-toast-progress"></div>
+  </div>
+
+  <script src="lang.js?v=20260904_03"></script>
+  <script src="script.js?v=20260904_04"></script>
 </body>
 
 </html>

@@ -124,7 +124,20 @@ const translations = {
     "contact_text": "Open to full-stack projects, AI products, technical collaborations and serious experiments.",
     "contact_btn": "Back to top ↑",
     "footer_role": "Full Stack · AI · Systems",
-    "footer_cv": "Resume (PDF) ↗"
+    "footer_cv": "Resume (PDF) ↗",
+    "cv_modal_badge": "RESUME DOWNLOAD",
+    "cv_modal_title": "Choose CV Language",
+    "cv_modal_desc": "Select which version of the curriculum vitae you would like to download:",
+    "cv_fr_title": "Version Française",
+    "cv_fr_file": "CV professionnel Full-stack Abdessamad Cherkaoui",
+    "cv_fr_meta": "PDF • 114 KB • Format Français",
+    "cv_en_title": "English Version",
+    "cv_en_file": "Professional Full-stack cv Abdessamad Cherkaoui",
+    "cv_en_meta": "PDF • 62 KB • International Format",
+    "cv_download_btn": "Download PDF ↓",
+    "cv_toast_title": "Download Started",
+    "cv_toast_fr": "Downloading French CV...",
+    "cv_toast_en": "Downloading English CV..."
   },
   fr: {
     "nav_work": "Projets",
@@ -251,7 +264,20 @@ const translations = {
     "contact_text": "Ouvert aux projets full-stack, produits d'IA, collaborations techniques et expérimentations sérieuses.",
     "contact_btn": "Retour en haut ↑",
     "footer_role": "Full Stack · IA · Systèmes",
-    "footer_cv": "CV (PDF) ↗"
+    "footer_cv": "CV (PDF) ↗",
+    "cv_modal_badge": "TÉLÉCHARGEMENT DU CV",
+    "cv_modal_title": "Choisissez la langue du CV",
+    "cv_modal_desc": "Sélectionnez la version du curriculum vitae que vous souhaitez télécharger :",
+    "cv_fr_title": "Version Française",
+    "cv_fr_file": "CV professionnel Full-stack Abdessamad Cherkaoui",
+    "cv_fr_meta": "PDF • 114 Ko • Format Français",
+    "cv_en_title": "English Version",
+    "cv_en_file": "Professional Full-stack cv Abdessamad Cherkaoui",
+    "cv_en_meta": "PDF • 62 Ko • Format International",
+    "cv_download_btn": "Télécharger PDF ↓",
+    "cv_toast_title": "Téléchargement lancé",
+    "cv_toast_fr": "Téléchargement du CV en français...",
+    "cv_toast_en": "Téléchargement du CV en anglais..."
   }
 };
 

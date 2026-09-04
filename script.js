@@ -699,5 +699,121 @@ updateTranslations();
   }, 100);
 })();
 
+/* =========================================================
+   CV DOWNLOAD MODAL & TOAST ALERT NOTIFICATION
+========================================================== */
+(function initCvModalController() {
+  const modalBackdrop = document.getElementById("cvModalBackdrop");
+  const closeBtn = document.getElementById("cvModalClose");
+  const cardFr = document.getElementById("cvCardFr");
+  const cardEn = document.getElementById("cvCardEn");
+  const toast = document.getElementById("cvToast");
+  const toastTitle = document.getElementById("cvToastTitle");
+  const toastDesc = document.getElementById("cvToastDesc");
+  let toastTimer = null;
 
+  if (!modalBackdrop) return;
 
+  function openModal() {
+    modalBackdrop.classList.add("active");
+    modalBackdrop.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+    if (typeof updateTranslations === "function") {
+      updateTranslations();
+    }
+  }
+
+  function closeModal() {
+    modalBackdrop.classList.remove("active");
+    modalBackdrop.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+  }
+
+  function showToast(langChoice) {
+    if (!toast) return;
+    const t = typeof translations !== "undefined" && translations[currentLang] ? translations[currentLang] : {};
+
+    if (toastTitle) {
+      toastTitle.textContent = t.cv_toast_title || (currentLang === "fr" ? "Téléchargement lancé" : "Download Started");
+    }
+
+    if (toastDesc) {
+      if (langChoice === "fr") {
+        toastDesc.textContent = t.cv_toast_fr || (currentLang === "fr" ? "Téléchargement du CV en français..." : "Downloading French CV...");
+      } else {
+        toastDesc.textContent = t.cv_toast_en || (currentLang === "fr" ? "Téléchargement du CV en anglais..." : "Downloading English CV...");
+      }
+    }
+
+    toast.classList.remove("show");
+    void toast.offsetWidth; // Force DOM reflow to retrigger CSS animation
+    toast.classList.add("show");
+
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toast.classList.remove("show");
+    }, 3800);
+  }
+
+  function triggerDownload(filePath, fileName, langChoice) {
+    const link = document.createElement("a");
+    link.href = filePath;
+    link.download = fileName;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    closeModal();
+    showToast(langChoice);
+  }
+
+  // Bind all download buttons / links
+  const triggers = document.querySelectorAll(".cv-trigger, [data-cv-trigger], .nav-cv-link");
+  triggers.forEach(trigger => {
+    trigger.addEventListener("click", e => {
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  // French choice
+  if (cardFr) {
+    cardFr.addEventListener("click", () => {
+      triggerDownload(
+        "assets/CV professionnel Full-stack Abdessamad Cherkaoui.pdf",
+        "CV professionnel Full-stack Abdessamad Cherkaoui.pdf",
+        "fr"
+      );
+    });
+  }
+
+  // English choice
+  if (cardEn) {
+    cardEn.addEventListener("click", () => {
+      triggerDownload(
+        "assets/Professional Full-Stack CV Abdessamad Cherkaoui.pdf",
+        "Professional Full-Stack CV Abdessamad Cherkaoui.pdf",
+        "en"
+      );
+    });
+  }
+
+  // Close triggers
+  if (closeBtn) {
+    closeBtn.addEventListener("click", closeModal);
+  }
+
+  modalBackdrop.addEventListener("click", e => {
+    if (e.target === modalBackdrop) {
+      closeModal();
+    }
+  });
+
+  window.addEventListener("keydown", e => {
+    if (e.key === "Escape" && modalBackdrop.classList.contains("active")) {
+      closeModal();
+    }
+  });
+})();
