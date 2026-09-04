@@ -28,7 +28,15 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  // Navigation requests: Serve instant cached HTML (0ms response)
+  // 1. Security Gate: Only intercept idempotent GET requests (Cache API does not support non-GET)
+  if (event.request.method !== 'GET') return;
+
+  // 2. Security Gate: Only intercept standard HTTP/HTTPS schemes (reject chrome-extension, data, blob)
+  if (!event.request.url.startsWith('http://') && !event.request.url.startsWith('https://')) return;
+
+  const url = new URL(event.request.url);
+
+  // 3. Navigation requests: Serve instant cached HTML (0ms response) with network fallback
   if (event.request.mode === 'navigate') {
     event.respondWith(
       caches.match(event.request)
@@ -50,15 +58,27 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Static assets (CSS, JS, Fonts, Images): Cache First with background revalidation
+  // 4. Security Gate: Only cache same-origin assets or approved CDN origins
+  const isSameOrigin = url.origin === self.location.origin;
+  const isTrustedCdn = url.hostname === 'fonts.googleapis.com' ||
+                       url.hostname === 'fonts.gstatic.com' ||
+                       url.hostname === 'cdn.jsdelivr.net';
+
+  if (!isSameOrigin && !isTrustedCdn) {
+    // Pass untrusted third-party requests directly to network without caching
+    return;
+  }
+
+  // 5. Static assets: Cache First with secure background revalidation
   event.respondWith(
     caches.match(event.request).then((cached) => {
       if (cached) {
-        // Asynchronously update cache in background
+        // Asynchronously update cache in background with cloned response
         fetch(event.request)
           .then((networkResponse) => {
             if (networkResponse && networkResponse.status === 200) {
-              caches.open(CACHE_NAME).then((cache) => cache.put(event.request, networkResponse));
+              const clone = networkResponse.clone();
+              caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
             }
           })
           .catch(() => { });

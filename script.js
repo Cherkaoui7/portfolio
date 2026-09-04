@@ -161,16 +161,21 @@ window.addEventListener("resize", resizeMindmapScene, { passive: true });
 /* =========================================================
    LANGUAGE TOGGLE & I18N
 ========================================================== */
-let currentLang = localStorage.getItem("cherkaoui-lang") || "en";
+const VALID_LANGS = ["en", "fr"];
+const storedLang = localStorage.getItem("cherkaoui-lang");
+let currentLang = VALID_LANGS.includes(storedLang) ? storedLang : "en";
 const langToggleBtn = document.getElementById("langToggle");
 
 function updateTranslations() {
+  if (!VALID_LANGS.includes(currentLang) || !Object.prototype.hasOwnProperty.call(translations, currentLang)) {
+    currentLang = "en";
+  }
   const t = translations[currentLang];
   if (!t) return;
   document.documentElement.lang = currentLang;
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.getAttribute("data-i18n");
-    if (t[key]) {
+    if (key && Object.prototype.hasOwnProperty.call(t, key)) {
       el.innerHTML = t[key];
     }
   });
@@ -207,7 +212,7 @@ function padZero(num) {
 }
 
 function typeNextChar() {
-  if (currentLine >= codeLines.length) {
+  if (!Array.isArray(codeLines) || currentLine >= codeLines.length) {
     const cursorDiv = document.createElement('div');
     cursorDiv.className = 'terminal-cursor';
     cursorDiv.innerHTML = `<i>${padZero(currentLine + 1)}</i><span></span>`;
@@ -215,7 +220,7 @@ function typeNextChar() {
     return;
   }
 
-  const lineText = codeLines[currentLine];
+  const lineText = codeLines[currentLine] || '';
   let lineDiv = document.getElementById('line-' + currentLine);
 
   if (!lineDiv) {
@@ -248,7 +253,10 @@ function startTypewriter() {
     heroCode.innerHTML = '';
     currentLine = 0;
     currentChar = 0;
-    codeLines = codeTranslations[currentLang] || codeTranslations['en'];
+    const lines = Object.prototype.hasOwnProperty.call(codeTranslations, currentLang)
+      ? codeTranslations[currentLang]
+      : codeTranslations['en'];
+    codeLines = Array.isArray(lines) ? lines : codeTranslations['en'];
     typewriterTimeout = setTimeout(typeNextChar, 80);
   }
 }
@@ -269,7 +277,7 @@ updateTranslations();
 
   let width = 0;
   let height = 0;
-  const dpr = window.devicePixelRatio || 1;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
   let animationFrameId = null;
   let isVisible = true;
 
@@ -396,7 +404,7 @@ updateTranslations();
 
   function render() {
     if (!isVisible) {
-      animationFrameId = requestAnimationFrame(render);
+      animationFrameId = null;
       return;
     }
 
@@ -507,7 +515,11 @@ updateTranslations();
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
+      const wasVisible = isVisible;
       isVisible = entry.isIntersecting;
+      if (!wasVisible && isVisible && !animationFrameId) {
+        animationFrameId = requestAnimationFrame(render);
+      }
     });
   }, { threshold: 0.05 });
 
@@ -675,7 +687,7 @@ updateTranslations();
 
   function render() {
     if (!isVisible) {
-      animationFrameId = requestAnimationFrame(render);
+      animationFrameId = null;
       return;
     }
 
@@ -694,7 +706,11 @@ updateTranslations();
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
+      const wasVisible = isVisible;
       isVisible = entry.isIntersecting;
+      if (!wasVisible && isVisible && !animationFrameId) {
+        animationFrameId = requestAnimationFrame(render);
+      }
     });
   }, { threshold: 0.05 });
   observer.observe(wrapper);
