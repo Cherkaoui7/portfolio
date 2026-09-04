@@ -1,7 +1,7 @@
 # ⚡ Cherkaoui Portfolio — Modern Animated Developer Portfolio
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-black?style=for-the-badge&logo=vercel)](https://assurances-cherkaoui.vercel.app/)
-[![GitHub](https://img.shields.io/badge/GitHub-Cherkaoui7-181717?style=for-the-badge&logo=github)](https://github.com/Cherkaoui7)
+[![Live Portfolio](https://img.shields.io/badge/Live_Portfolio-GitHub_Pages-2ea44f?style=for-the-badge&logo=githubpages)](https://cherkaoui7.github.io/portfolio/)
+[![Repository](https://img.shields.io/badge/GitHub_Repo-Cherkaoui7%2Fportfolio-181717?style=for-the-badge&logo=github)](https://github.com/Cherkaoui7/portfolio)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Abdessamad_Cherkaoui-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/cherkaoui-abdessamad-750294212/)
 [![Email](https://img.shields.io/badge/Gmail-cherkaouiabdessamad9-EA4335?style=for-the-badge&logo=gmail)](https://mail.google.com/mail/?view=cm&fs=1&to=cherkaouiabdessamad9@gmail.com)
 
@@ -12,6 +12,7 @@
 ## 📑 Table of Contents
 
 - [Overview](#-overview)
+- [Live Deployments & Demos](#-live-deployments--demos)
 - [Key Features](#-key-features)
 - [Featured Projects](#-featured-projects)
 - [Interactive Sections](#-interactive-sections)
@@ -19,8 +20,8 @@
   - [Neural Plexus Network (Education)](#2-neural-plexus-network-education)
   - [Interactive Skills Mind Map](#3-interactive-skills-mind-map)
   - [Bilingual Engine (EN / FR)](#4-bilingual-engine-en--fr)
-- [Education &amp; Academic Background](#-education--academic-background)
-- [Tech Stack &amp; Architecture](#-tech-stack--architecture)
+- [Education & Academic Background](#-education--academic-background)
+- [Tech Stack & Architecture](#-tech-stack--architecture)
 - [Project Structure](#-project-structure)
 - [Getting Started](#-getting-started)
 - [Deployment](#-deployment)
@@ -31,6 +32,19 @@
 ## 🌟 Overview
 
 This repository hosts the official personal portfolio of **Abdessamad Cherkaoui**, Full-Stack Web Developer and AI systems enthusiast. Designed with cutting-edge visual aesthetics, glassmorphism, responsive cyber-themed typography, and micro-interactions, it showcases real-world production applications, architectural case studies, and engineering capabilities without any third-party framework overhead.
+
+---
+
+## 🌐 Live Deployments & Demos
+
+| Application | Live Demo Link | Source Code | Hosting |
+| :--- | :--- | :--- | :--- |
+| **Portfolio (This Project)** | [🔗 cherkaoui7.github.io/portfolio](https://cherkaoui7.github.io/portfolio/) | [GitHub](https://github.com/Cherkaoui7/portfolio) | GitHub Pages |
+| **JobFinder AI** | [🔗 ai-job-finder-orcin.vercel.app](https://ai-job-finder-orcin.vercel.app/) | [GitHub](https://github.com/Cherkaoui7/AiJobFinder) | Vercel Serverless |
+| **Assurances Cherkaoui** | [🔗 assurances-cherkaoui.vercel.app](https://assurances-cherkaoui.vercel.app/) | [GitHub](https://github.com/Cherkaoui7/assurance_ch) | Vercel |
+| **AURORA Store** | [🔗 aurorastore-six.vercel.app](https://aurorastore-six.vercel.app/) | [GitHub](https://github.com/Cherkaoui7/aurora_store) | Vercel |
+| **ArchivePro (Agdal-Ryad)** | [🔗 archivesemp.netlify.app](https://archivesemp.netlify.app/) | [GitHub](https://github.com/Cherkaoui7/archive_emp) | Netlify |
+| **DOMINATORES 3D** | *Private 3D Client Preview* | [GitHub](https://github.com/Cherkaoui7/event) | Custom |
 
 ---
 
@@ -49,13 +63,13 @@ This repository hosts the official personal portfolio of **Abdessamad Cherkaoui*
 
 ## 💼 Featured Projects
 
-| Project                        | Description                                                                                                                                                | Core Stack                                      | Repository / Live                                                                                           |
-| :----------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------- | :---------------------------------------------------------------------------------------------------------- |
-| **JobFinder AI**         | AI-driven job search platform featuring Bring-Your-Own-Key (BYOK) architecture, real-time scraping, and resume-to-job matching with compatibility scoring. | React, Node.js, Mistral AI, SerpApi             | [GitHub](https://github.com/Cherkaoui7/AiJobFinder)                                                          |
-| **DOMINATORES**          | Luxury 3D real estate and event planning platform with procedural dollhouse views, interactive booth reservation, and real-time floor plans.               | Laravel 10, Sanctum, React 18, Three.js         | [GitHub](https://github.com/Cherkaoui7/event)                                                                |
-| **Assurances Cherkaoui** | Full-stack production insurance brokerage platform with automated quotation calculator, NodeMailer dispatch, and secure administrative dashboard.          | MongoDB, Express, React, Node.js                | [GitHub](https://github.com/Cherkaoui7/assurance_ch) · [Live Demo](https://assurances-cherkaoui.vercel.app/) |
-| **AURORA Store**         | Modern eCommerce experience featuring spring-physics animations, responsive product filtering, and scalable media handling pipeline.                       | MongoDB, Express, React, Node.js, Framer Motion | [GitHub](https://github.com/Cherkaoui7/aurora_store)                                                         |
-| **ArchivePro**           | Public sector digital archiving solution built for*Conseil de l'Arrondissement Agdal-Ryad* with offline-first indexing and high-volume Excel exports.    | Offline-first PWA, IndexedDB, Chart.js, SheetJS | [GitHub](https://github.com/Cherkaoui7/archive_emp)                                                          |
+| Project | Description | Core Stack | Repository / Live |
+| :--- | :--- | :--- | :--- |
+| **JobFinder AI** | AI-driven job search platform featuring Bring-Your-Own-Key (BYOK) architecture, real-time scraping, and resume-to-job matching with compatibility scoring. | React, Node.js, Mistral AI, SerpApi | [Live Demo ↗](https://ai-job-finder-orcin.vercel.app/) · [GitHub ↗](https://github.com/Cherkaoui7/AiJobFinder) |
+| **DOMINATORES** | Luxury 3D real estate and event planning platform with procedural dollhouse views, interactive booth reservation, and real-time floor plans. | Laravel 10, Sanctum, React 18, Three.js | [GitHub ↗](https://github.com/Cherkaoui7/event) |
+| **Assurances Cherkaoui** | Full-stack production insurance brokerage platform with automated quotation calculator, NodeMailer dispatch, and secure administrative dashboard. | MongoDB, Express, React, Node.js | [Live Demo ↗](https://assurances-cherkaoui.vercel.app/) · [GitHub ↗](https://github.com/Cherkaoui7/assurance_ch) |
+| **AURORA Store** | Modern eCommerce experience featuring spring-physics animations, responsive product filtering, and scalable media handling pipeline. | MongoDB, Express, React, Node.js, Framer Motion | [Live Demo ↗](https://aurorastore-six.vercel.app/) · [GitHub ↗](https://github.com/Cherkaoui7/aurora_store) |
+| **ArchivePro** | Public sector digital archiving solution built for *Conseil de l'Arrondissement Agdal-Ryad* with offline-first indexing and high-volume Excel exports. | Offline-first PWA, IndexedDB, Chart.js, SheetJS | [Live Demo ↗](https://archivesemp.netlify.app/) · [GitHub ↗](https://github.com/Cherkaoui7/archive_emp) |
 
 ---
 
