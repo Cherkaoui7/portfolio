@@ -1894,7 +1894,9 @@ body.cursor-hover .cursor-ring {
 .contact-actions {
   display: flex;
   gap: 14px;
-  margin-top: 35px
+  margin-top: 35px;
+  position: relative;
+  z-index: 5;
 }
 
 .contact-bg {
@@ -1902,7 +1904,8 @@ body.cursor-hover .cursor-ring {
   right: -70px;
   top: -70px;
   width: 560px;
-  height: 560px
+  height: 560px;
+  pointer-events: none;
 }
 
 .contact-bg span {
@@ -1910,17 +1913,18 @@ body.cursor-hover .cursor-ring {
   inset: 0;
   border: 1px solid var(--line);
   border-radius: 50%;
-  transform: rotate(30deg)
+  transform: rotate(30deg);
+  pointer-events: none;
 }
 
 .contact-bg span:nth-child(2) {
   inset: 50px;
-  transform: rotate(-20deg)
+  transform: rotate(-20deg);
 }
 
 .contact-bg span:nth-child(3) {
   inset: 120px;
-  border-color: color-mix(in srgb, var(--line2) 30%, transparent)
+  border-color: color-mix(in srgb, var(--line2) 30%, transparent);
 }
 
 .footer {
@@ -2383,6 +2387,8 @@ body.cursor-hover .cursor-ring {
     width: 100%;
     gap: 12px;
     margin-top: 24px;
+    position: relative;
+    z-index: 5;
   }
 
   .contact-actions .button {
@@ -2390,6 +2396,8 @@ body.cursor-hover .cursor-ring {
     justify-content: center;
     text-align: center;
     display: flex;
+    position: relative;
+    z-index: 6;
   }
 
   .footer {

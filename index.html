@@ -115,8 +115,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- Preload Core Stylesheet -->
-  <link rel="preload" href="style.css?v=20260904_09" as="style">
-  <link rel="stylesheet" href="style.css?v=20260904_09">
+  <link rel="preload" href="style.css?v=20260905_02" as="style">
+  <link rel="stylesheet" href="style.css?v=20260905_02">
 
   <!-- Asynchronous Non-Blocking Fonts & Devicons -->
   <link rel="preload"
@@ -308,7 +308,7 @@
   </style>
 </head>
 
-<body>
+<body id="top">
   <div class="cursor-dot"></div>
   <div class="cursor-ring"></div>
   <div class="noise"></div>
@@ -1189,19 +1189,22 @@
 
     <section class="section contact" id="contact">
       <div class="contact-card reveal">
-        <div class="contact-bg"><span></span><span></span><span></span></div>
+        <div class="contact-bg" style="pointer-events: none;" aria-hidden="true"><span></span><span></span><span></span></div>
         <p class="eyebrow" data-i18n="contact_eyebrow">Let's build something useful</p>
         <h2 data-i18n="contact_title">Have a difficult<br><span>problem?</span></h2>
         <p data-i18n="contact_text">Open to full-stack projects, AI products, technical collaborations and serious
           experiments.</p>
-        <div class="contact-actions">
+        <div class="contact-actions" style="position: relative; z-index: 10;">
           <a class="button primary magnetic"
             href="https://mail.google.com/mail/?view=cm&fs=1&to=cherkaouiabdessamad9@gmail.com" target="_blank"
             rel="noopener noreferrer" aria-label="Send email to Abdessamad Cherkaoui">cherkaouiabdessamad9@gmail.com ↗</a>
           <a class="button secondary magnetic cv-trigger" href="#cv-modal" data-cv-trigger
+            onclick="if(window.openCvModal){window.openCvModal();return false;}"
             aria-label="Download Abdessamad Cherkaoui's Curriculum Vitae as PDF"
             data-i18n="hero_btn_cv">Download CV (PDF) ↓</a>
-          <a class="button secondary magnetic" href="#top" aria-label="Back to top of page" data-i18n="contact_btn">Back to top ↑</a>
+          <a class="button secondary magnetic" href="#top"
+            onclick="window.scrollTo({top:0,behavior:'smooth'});return false;"
+            aria-label="Back to top of page" data-i18n="contact_btn">Back to top ↑</a>
         </div>
       </div>
     </section>

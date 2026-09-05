@@ -50,15 +50,25 @@ window.addEventListener("scroll", () => {
   }
 }, { passive: true });
 
-/* Magnetic links */
-$$(".magnetic").forEach(el => {
-  el.addEventListener("pointermove", e => {
-    const r = el.getBoundingClientRect();
-    const x = (e.clientX - r.left - r.width / 2) * .18;
-    const y = (e.clientY - r.top - r.height / 2) * .18;
-    el.style.transform = `translate(${x}px,${y}px)`;
+/* Magnetic links — only for fine pointers (mouse), disabled on touch devices */
+if (matchMedia("(pointer:fine)").matches) {
+  $$(".magnetic").forEach(el => {
+    el.addEventListener("pointermove", e => {
+      const r = el.getBoundingClientRect();
+      const x = (e.clientX - r.left - r.width / 2) * .18;
+      const y = (e.clientY - r.top - r.height / 2) * .18;
+      el.style.transform = `translate(${x}px,${y}px)`;
+    });
+    el.addEventListener("pointerleave", () => el.style.transform = "");
   });
-  el.addEventListener("pointerleave", () => el.style.transform = "");
+}
+
+/* Back to top smooth navigation */
+$$('a[href="#top"]').forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 });
 
 /* Cursor */
@@ -800,6 +810,9 @@ updateTranslations();
     modalBackdrop.setAttribute("aria-hidden", "true");
     document.body.classList.remove("modal-open");
   }
+
+  window.openCvModal = openModal;
+  window.closeCvModal = closeModal;
 
   function showToast(langChoice) {
     if (!toast) return;
