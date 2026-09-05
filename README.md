@@ -1,228 +1,303 @@
-# ⚡ Cherkaoui Portfolio — Modern Animated Developer Portfolio
+# ⚡ Abdessamad Cherkaoui — Engineering Portfolio
 
-[![Live Portfolio](https://img.shields.io/badge/Live_Portfolio-GitHub_Pages-2ea44f?style=for-the-badge&logo=githubpages)](https://cherkaoui7.github.io/portfolio/)
-[![Repository](https://img.shields.io/badge/GitHub_Repo-Cherkaoui7%2Fportfolio-181717?style=for-the-badge&logo=github)](https://github.com/Cherkaoui7/portfolio)
+[![Live Production](https://img.shields.io/badge/Production_Live-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://portfolio-ten-zeta-y2ibotfr2g.vercel.app/)
+[![GitHub Repository](https://img.shields.io/badge/GitHub_Repo-Cherkaoui7%2Fportfolio-181717?style=for-the-badge&logo=github)](https://github.com/Cherkaoui7/portfolio)
+[![Architecture](https://img.shields.io/badge/Stack-Vanilla_JS_•_HTML5_•_CSS3-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](#-architectural-philosophy)
+[![Performance](https://img.shields.io/badge/Performance-60_FPS_•_Zero_Build-brightgreen?style=for-the-badge&logo=speedtest&logoColor=white)](#-ultra-responsive-engine--mobile-performance)
+[![Security](https://img.shields.io/badge/Security-Strict_CSP_•_A%2B_Rating-blue?style=for-the-badge&logo=securityscorecard&logoColor=white)](#-application-security--red-team-hardening)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Abdessamad_Cherkaoui-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/cherkaoui-abdessamad-750294212/)
-[![Email](https://img.shields.io/badge/Gmail-cherkaouiabdessamad9-EA4335?style=for-the-badge&logo=gmail)](https://mail.google.com/mail/?view=cm&fs=1&to=cherkaouiabdessamad9@gmail.com)
+[![Email](https://img.shields.io/badge/Email-cherkaouiabdessamad9-EA4335?style=for-the-badge&logo=gmail)](https://mail.google.com/mail/?view=cm&fs=1&to=cherkaouiabdessamad9@gmail.com)
 
-> A modern, high-performance portfolio featuring an authentic **Monokai terminal code card**, an **interactive neural plexus constellation** for education, an **interactive tech stack mind map with cyber data rain**, **3D holographic project simulations**, and a **zero-reload bilingual engine (English / French)**. Built with pure semantic HTML5, modern CSS3, and vanilla ES6+ JavaScript.
+> A modern, ultra-fast personal portfolio engineered for **maximum performance**, **semantic SEO discoverability**, and **cybernetic visual aesthetics**. Features an authentic **Monokai terminal code engine**, an **interactive neural plexus constellation** for academic milestones, a **dual-mode Tech Stack Ecosystem** (desktop interactive SVG cyber-rain canvas & mobile vertical spine layout), **3D holographic CSS project visualizers**, a **zero-reload bilingual engine (EN / FR)**, an integrated **CV download hub**, and enterprise-grade **Content Security Policy (CSP)** hardening.
 
 ---
 
 ## 📑 Table of Contents
 
-- [Overview](#-overview)
-- [Live Deployments & Demos](#-live-deployments--demos)
-- [Key Features](#-key-features)
-- [Featured Projects](#-featured-projects)
-- [Interactive Sections](#-interactive-sections)
-  - [Monokai Hero Code Engine](#1-monokai-hero-code-engine)
-  - [Neural Plexus Network (Education)](#2-neural-plexus-network-education)
-  - [Interactive Skills Mind Map & Cyber Data Rain](#3-interactive-skills-mind-map--cyber-data-rain)
-  - [3D Holographic Project Showcases](#4-3d-holographic-project-showcases)
-  - [Bilingual Engine (EN / FR)](#5-bilingual-engine-en--fr)
-- [Education & Academic Background](#-education--academic-background)
-- [Tech Stack & Architecture](#-tech-stack--architecture)
-- [Project Structure](#-project-structure)
-- [Getting Started](#-getting-started)
-- [Deployment](#-deployment)
-- [Contact](#-contact)
+1. [🌟 Architectural Philosophy](#-architectural-philosophy)
+2. [🌐 Live Deployments & Production Demos](#-live-deployments--production-demos)
+3. [⚡ Core Features & Interactive Showcase](#-core-features--interactive-showcase)
+   - [1. Monokai Hero Code Engine](#1-monokai-hero-code-engine)
+   - [2. Neural Constellation Network (Education)](#2-neural-constellation-network-education)
+   - [3. Dual-Mode Tech Stack Ecosystem](#3-dual-mode-tech-stack-ecosystem)
+     - [Desktop: Interactive Radial Mind Map & Cyber Rain](#desktop--768px-interactive-radial-mind-map--cyber-rain)
+     - [Mobile: Vertical Glowing Spine & Tech Pillars](#mobile--768px-vertical-glowing-spine--tech-pillars)
+   - [4. 3D Holographic Project Visual Simulations](#4-3d-holographic-project-visual-simulations)
+   - [5. Zero-Reload Multilingual Engine (EN / FR)](#5-zero-reload-multilingual-engine-en--fr)
+   - [6. Bilingual CV Hub & Download Center](#6-bilingual-cv-hub--download-center)
+   - [7. Precision Micro-Interactions & Physics](#7-precision-micro-interactions--physics)
+4. [📱 Ultra-Responsive Engine & Mobile Performance](#-ultra-responsive-engine--mobile-performance)
+5. [🔍 Semantic SEO & Search Engine Discoverability](#-semantic-seo--search-engine-discoverability)
+6. [🛡️ Application Security & Red-Team Hardening](#-application-security--red-team-hardening)
+7. [🎓 Academic Background & Credentials](#-academic-background--credentials)
+8. [💼 Featured Production Projects](#-featured-production-projects)
+9. [📁 Project Structure & Codebase Map](#-project-structure--codebase-map)
+10. [💻 Local Development & Setup](#-local-development--setup)
+11. [🚢 Deployment Workflow](#-deployment-workflow)
+12. [📬 Contact & Professional Inquiries](#-contact--professional-inquiries)
 
 ---
 
-## 🌟 Overview
+## 🌟 Architectural Philosophy
 
-This repository hosts the official personal portfolio of **Abdessamad Cherkaoui**, Full-Stack Web Developer and AI systems enthusiast. Designed with cutting-edge visual aesthetics, glassmorphism, responsive cyber-themed typography, and micro-interactions, it showcases real-world production applications, architectural case studies, and engineering capabilities without any third-party framework overhead.
+The portfolio was engineered under a strict **zero-bloat, static-first, progressive enhancement** mindset:
 
----
-
-## 🌐 Live Deployments & Demos
-
-| Application | Live Demo Link | Source Code | Hosting |
-| :--- | :--- | :--- | :--- |
-| **Portfolio (This Project)** | [🔗 cherkaoui7.github.io/portfolio](https://cherkaoui7.github.io/portfolio/) | [GitHub](https://github.com/Cherkaoui7/portfolio) | GitHub Pages |
-| **JobFinder AI** | [🔗 ai-job-finder-orcin.vercel.app](https://ai-job-finder-orcin.vercel.app/) | [GitHub](https://github.com/Cherkaoui7/AiJobFinder) | Vercel Serverless |
-| **Assurances Cherkaoui** | [🔗 assurances-cherkaoui.vercel.app](https://assurances-cherkaoui.vercel.app/) | [GitHub](https://github.com/Cherkaoui7/assurance_ch) | Vercel |
-| **AURORA Store** | [🔗 aurorastore-six.vercel.app](https://aurorastore-six.vercel.app/) | [GitHub](https://github.com/Cherkaoui7/aurora_store) | Vercel |
-| **ArchivePro (Agdal-Ryad)** | [🔗 archivesemp.netlify.app](https://archivesemp.netlify.app/) | [GitHub](https://github.com/Cherkaoui7/archive_emp) | Netlify |
-| **DOMINATORES 3D** | *Private 3D Client Preview* | [GitHub](https://github.com/Cherkaoui7/event) | Custom |
+- **Zero NPM Dependencies at Runtime:** No React, Next.js, Vue, Tailwind CSS, GSAP, Framer Motion, or Three.js bundle overhead.
+- **Sub-Second First Contentful Paint (FCP):** Inlined critical CSS, self-contained SVG vectors, asynchronous non-critical scripts (`defer`), and zero render-blocking requests.
+- **Hardware-Accelerated 60 FPS Animations:** Animations strictly utilize `transform` and `opacity` to run exclusively on the GPU compositor thread without triggering layout reflows.
+- **Adaptive Resource Throttling:** Detects device capabilities (`pointer: coarse`, mobile viewports) to automatically disable heavy 3D floors and background canvas `requestAnimationFrame` loops on mobile devices.
 
 ---
 
-## 🚀 Key Features
+## 🌐 Live Deployments & Production Demos
 
-- **⚡ Zero-Build Blazing Speed:** Hand-crafted in pure HTML5, vanilla CSS3, and modern JavaScript (ES6+). Loads instantly with 0 npm bundle latency.
-- **🎨 Monokai Syntax Terminal:** Authentic Monokai code block with typing simulation, syntax tokenization, and glowing macOS window controls.
-- **🧠 Interactive HTML5 Canvas Neural Network:** Dynamic particle canvas with distance-based synaptic connections and interactive mouse attraction physics.
-- **🌧️ Cyber Data Rain Particle Canvas:** Dedicated 60 FPS HTML5 canvas rendering 75 animated luminous points streaming like cybernetic rain with multi-depth 3D parallax, glowing particle heads, gradient streaks, and real-time mouse breeze deflection.
-- **🗺️ SVG Tech Stack Mind Map:** Radial interactive skills ecosystem with 4 color-coded branches, pulsing satellite hub, and branch-reactive hover states.
-- **✨ 3D Cybernetic Project Visuals:** Hand-crafted CSS3 3D perspective animations for every featured project (rotating 3D WebGL cube with orbit, holographic scanning HUD, cyber security shield with laser beams, chromatic aurora borealis, and telemetry frequency equalizer).
-- **🌓 Seamless Dark & Light Themes:** Zero-flicker theme toggle with persistent storage, high-contrast WCAG-compliant color palettes, blueprint dot-matrix container styling, and dynamic canvas particle re-theming.
-- **🌐 Real-Time Bilingual Toggle:** Instant client-side language switching between English and French without page reload.
-- **🖱️ Precision Physics Micro-Interactions:** Custom magnetic cursor, dual-ring follower, 3D card tilt on hover, and smooth scroll progress monitoring.
-- **📬 Direct Gmail Compose Workflow:** One-click contact button automatically opens a pre-addressed web Gmail draft (`cherkaouiabdessamad9@gmail.com`) bypassing legacy Outlook protocol popups.
-- **📄 Native Resume Integration:** Direct download link pointing to authentic curriculum vitae.
+| Application | Role & Architecture | Stack | Live URL | Source Code |
+| :--- | :--- | :--- | :--- | :--- |
+| **Official Portfolio** | Personal Developer Portfolio & AI Engineering Hub | HTML5, CSS3, Vanilla JS, SVG, Canvas 2D | [🔗 Live on Vercel](https://portfolio-ten-zeta-y2ibotfr2g.vercel.app/) | [GitHub](https://github.com/Cherkaoui7/portfolio) |
+| **JobFinder AI** | BYOK Job Aggregator & Mistral AI Resume Matcher | React, Node.js, Mistral AI, SerpApi | [🔗 ai-job-finder-orcin.vercel.app](https://ai-job-finder-orcin.vercel.app/) | [GitHub](https://github.com/Cherkaoui7/AiJobFinder) |
+| **Assurances Cherkaoui** | Production Insurance Brokerage Platform | MERN Stack (MongoDB, Express, React, Node) | [🔗 assurances-cherkaoui.vercel.app](https://assurances-cherkaoui.vercel.app/) | [GitHub](https://github.com/Cherkaoui7/assurance_ch) |
+| **AURORA Store** | Modern eCommerce Platform with Spring Physics | React, Express, MongoDB, Node.js | [🔗 aurorastore-six.vercel.app](https://aurorastore-six.vercel.app/) | [GitHub](https://github.com/Cherkaoui7/aurora_store) |
+| **ArchivePro** | Public Sector Archiving Solution (Agdal-Ryad) | Offline-First PWA, IndexedDB, SheetJS | [🔗 archivesemp.netlify.app](https://archivesemp.netlify.app/) | [GitHub](https://github.com/Cherkaoui7/archive_emp) |
+| **DOMINATORES 3D** | Luxury 3D Real Estate & Interactive Floorplans | Three.js, React 18, Laravel 10, Sanctum | *Private Client Preview* | [GitHub](https://github.com/Cherkaoui7/event) |
 
 ---
 
-## 💼 Featured Projects
-
-| Project | Description | Core Stack | Repository / Live |
-| :--- | :--- | :--- | :--- |
-| **JobFinder AI** | AI-driven job search platform featuring Bring-Your-Own-Key (BYOK) architecture, real-time scraping, and resume-to-job matching with compatibility scoring. | React, Node.js, Mistral AI, SerpApi | [Live Demo ↗](https://ai-job-finder-orcin.vercel.app/) · [GitHub ↗](https://github.com/Cherkaoui7/AiJobFinder) |
-| **DOMINATORES** | Luxury 3D real estate and event planning platform with procedural dollhouse views, interactive booth reservation, and real-time floor plans. | Laravel 10, Sanctum, React 18, Three.js | [GitHub ↗](https://github.com/Cherkaoui7/event) |
-| **Assurances Cherkaoui** | Full-stack production insurance brokerage platform with automated quotation calculator, NodeMailer dispatch, and secure administrative dashboard. | MongoDB, Express, React, Node.js | [Live Demo ↗](https://assurances-cherkaoui.vercel.app/) · [GitHub ↗](https://github.com/Cherkaoui7/assurance_ch) |
-| **AURORA Store** | Modern eCommerce experience featuring spring-physics animations, responsive product filtering, and scalable media handling pipeline. | MongoDB, Express, React, Node.js, Framer Motion | [Live Demo ↗](https://aurorastore-six.vercel.app/) · [GitHub ↗](https://github.com/Cherkaoui7/aurora_store) |
-| **ArchivePro** | Public sector digital archiving solution built for *Conseil de l'Arrondissement Agdal-Ryad* with offline-first indexing and high-volume Excel exports. | Offline-first PWA, IndexedDB, Chart.js, SheetJS | [Live Demo ↗](https://archivesemp.netlify.app/) · [GitHub ↗](https://github.com/Cherkaoui7/archive_emp) |
-
----
-
-## 🔬 Interactive Sections
+## ⚡ Core Features & Interactive Showcase
 
 ### 1. Monokai Hero Code Engine
+- **Authentic Monokai Syntax:** Highlights object declarations, strings, arrays, keys, and values according to standard Monokai hexadecimal tokens (`#f92672`, `#a6e22e`, `#66d9ef`, `#e6db74`, `#75715e`).
+- **macOS Window Frame:** Interactive header with traffic light window controls and active file indicator (`portfolio.js`).
+- **Dynamic Syntax Injection:** Reflects developer metadata, production specialties, and technical proficiencies.
 
-An interactive hero card simulating an active code editor running on the authentic **Monokai syntax theme**:
+### 2. Neural Constellation Network (Education)
+- **Living HTML5 Canvas 2D Mesh:** Generates 38 synaptic nodes connected by dynamic proximity-based connecting lines.
+- **Physics Interaction:** Interactive mouse repulsion field that pushes nodes away gently upon cursor hover with elastic restitution.
+- **Automatic Mobile Offloading:** Automatically unmounts canvas rendering loops on viewports `<= 768px` to save mobile battery life and eliminate composite recalculation.
 
-- **Tokens:** Keywords (`#f92672`), Variables & Functions (`#a6e22e`), Object Keys (`#66d9ef`), Strings (`#e6db74`), and Comments (`#75715e`).
-- **Interactive Cursor:** Animated pulsing terminal block cursor with live character injection.
+### 3. Dual-Mode Tech Stack Ecosystem
+The skills section adapts dynamically depending on whether the user is on desktop or mobile:
 
-### 2. Neural Plexus Network (Education)
+#### Desktop (> 768px): Interactive Radial Mind Map & Cyber Rain
+- **1536×1024 Scaled SVG Scene:** Radial layout with 4 distinct colored sectors branching out from an illuminated central core hub.
+- **Cyber Data Rain Canvas (`#mindmapRainCanvas`):** 75 luminous particles streaming downward at varying depth velocities with glowing heads, trailing streaks, and interactive mouse-breeze deflection.
+- **Drag-to-Explore Interaction:** Custom mouse drag-and-scroll controller allowing smooth horizontal navigation across high-resolution screens.
 
-A specialized visual representation of academic milestones rendered as a living neural network:
+#### Mobile (<= 768px): Vertical Glowing Spine & Tech Pillars
+- **Curved Neon Spine (`.mv-spine-svg`):** Dotted vertical gradient curve running through the 4 category nodes.
+- **4 Circular Glowing Category Nodes:**
+  - 🌐 **Frontend (Cyan - `#00f0ff`):** `</>` Code icon, title, subtitle, and horizontal connector dot.
+  - ⚙️ **Backend (Purple - `#b026ff`):** Server icon, title, subtitle, and connector dot.
+  - 🗄️ **Database & Tools (Turquoise - `#00e5a3`):** Cylinder database icon, title, subtitle, and connector dot.
+  - ⭐ **Core Competencies (Amber - `#f59e0b`):** Star badge, title, subtitle, and connector dot.
+- **Pill Grid Cards:** Glassmorphic rounded cards housing technology badges with custom SVGs and Devicon icons, optimized for multi-line wrapping and zero text truncation.
 
-- **Canvas Physics:** 38 dynamic synaptic nodes connected by adaptive proximity lines with real-time mouse repulsion and connection tethering.
-- **Floating Glassmorphic Hubs:** Semi-transparent cards with neon green borders, glowing accent nexus nodes, and high-contrast credential badges.
+### 4. 3D Holographic Project Visual Simulations
+Each featured project includes a custom CSS3 3D animated visual preview:
+- **JobFinder AI:** Multi-layer laser scanner HUD with oscillating beam, 98% AI compatibility meter, and telemetry data streams.
+- **DOMINATORES:** Continuous rotating 3D isometric cube encased within a cosmic planetary orbit ring.
+- **Assurances Cherkaoui:** Pulsing cybersecurity shield with multi-angle diagonal laser barrier rays.
+- **AURORA Store:** Chromatic aurora borealis wave gradient animation glowing behind a floating glass card.
+- **ArchivePro:** Digital matrix registry display featuring real-time animated frequency equalizer telemetry bars.
 
-### 3. Interactive Skills Mind Map & Cyber Data Rain
+### 5. Zero-Reload Multilingual Engine (EN / FR)
+- **Instant Client-Side I18n:** Built into [`lang.js`](./lang.js). Switches all textual content, tags, button labels, and system status indicators between English and French without reloading the page.
+- **Symmetric Layout Preservation:** Translates without causing horizontal text overflow or visual misalignment.
+- **Persistent State:** Automatically saves chosen language to `localStorage`.
 
-An SVG-driven radial architecture diagram mapping technical competencies across 4 distinct, color-coded branches:
+### 6. Bilingual CV Hub & Download Center
+- **Accessible CV Modal (`#cvModal`):** Triggered from the navigation bar, hero action button, or contact section.
+- **Dual Formats:**
+  - 🇫🇷 **Version Française:** `assets/CV Abdessamad Cherkaoui – Développeur Web Full-Stack.pdf`
+  - 🇬🇧 **English Version:** `assets/Professional Full-Stack CV Abdessamad Cherkaoui.pdf`
+- **Feedback Toast Notification:** Real-time download feedback toast with an animated progress bar and automatic dismissal.
+- **Full Keyboard Accessibility:** Supports `Escape` key close, focus trapping, and background click dismiss.
 
-- **Cyber Data Rain Canvas (`#mindmapRainCanvas`):** 75 animated luminous points streaming downwards in the background with multi-depth parallax, glowing heads, trailing gradient streaks, and mouse breeze deflection.
-- **4 Color-Coded Pillars:**
-  - **Frontend Core:** Cyan / Ocean Blue (`#0abaff` / `#0284c7`) — React, Next.js, Vue, Angular, Three.js, Framer Motion, Tailwind CSS, Bootstrap, HTML5, CSS3.
-  - **Backend Architecture:** Royal Purple (`#ae50ff` / `#9333ea`) — Node.js, Express.js, PHP, Laravel, Python, REST APIs.
-  - **Database & Tools:** Emerald Teal (`#13d9d1` / `#059669`) — MySQL, MongoDB, SQLite, Git, Vite, NodeMailer, Figma.
-  - **Core Competencies:** Warm Amber (`#ff9f00` / `#d97706`) — Project Management, Responsive Web Design, AI Integration, Team Spirit, Creativity.
-- **High-Tech Blueprint Container:** Dot-matrix grid texture, multi-color gradient top accent rim, radial ambient lighting, and pulsing central hub with orbital satellite nodes.
-- **Branch-Reactive Hover States:** Badges highlight with group-specific neon glow outlines, background tints, and icon magnification on hover.
-
-### 4. 3D Holographic Project Showcases
-
-Hand-crafted CSS3/WebGL-inspired animated visual simulations for each project:
-
-- **JobFinder AI:** 3D perspective scanner HUD with oscillating laser beam, 98% Mistral AI match gauge, and streaming data lines.
-- **DOMINATORES:** Continuous 3D rotating isometric cube (`rotateX(415deg) rotateZ(405deg)`) encased by a cosmic planetary orbit ring.
-- **Assurances Cherkaoui:** Glowing cybernetic security shield with multi-angle laser security rays.
-- **AURORA Store:** Floating glassmorphic product card with dynamic chromatic aurora borealis pulsating backdrop.
-- **ArchivePro:** Digital matrix registry card featuring real-time telemetry frequency equalizer bars.
-
-### 5. Bilingual Engine (EN / FR)
-
-Integrated multilingual architecture managed through [`lang.js`](./lang.js):
-
-- Comprehensive translation dictionary covering navigation, hero statements, project descriptions, metric badges, and contact forms.
-- Preserves layout symmetry and prevents text clipping across all viewport widths.
+### 7. Precision Micro-Interactions & Physics
+- **Dual-Ring Custom Cursor:** Real-time trailing dot and spring-interpolated outer halo (automatically disabled on touch devices via `pointer: coarse`).
+- **Magnetic Action Buttons:** Buttons softly pull toward cursor position within proximity radius.
+- **3D Card Hover Tilt:** Gentle 3D perspective tilt calculations on desktop hover.
+- **Dynamic Scroll Progress Bar:** Ambient progress indicator at the top of the viewport tracking reading depth.
 
 ---
 
-## 🎓 Education & Academic Background
+## 📱 Ultra-Responsive Engine & Mobile Performance
 
-```mermaid
-graph LR
-    A["01 · Lycée Abass El Miftah<br/>(2021 — 2022)<br/>Baccalauréat Sciences Physiques"] --> B["02 · ISTA NTIC Rabat<br/>(2024 — 2026)<br/>Dév. Digital Full Stack Web"]
-    B --> C["03 · Université Mohammed V<br/>(2023 — 2027)<br/>Licence Sciences Éco & Gestion"]
-    style B stroke:#a6e22e,stroke-width:2px
+The portfolio was engineered and verified across all standard viewport widths:
+
+| Viewport Category | Screen Sizes Tested | Layout State | Mobile Performance Optimizations |
+| :--- | :--- | :--- | :--- |
+| **Ultra-Compact Mobile** | 320px – 360px (iPhone SE 1st gen) | Single column, compact pills | Zero overflow, font clamp scaling, subtitle hidden on 320px |
+| **Standard Mobile** | 375px – 430px (iPhone 12/13/14/15, Pixel) | Vertical Tech Spine, full actions stack | 3D floor disabled, spinning rings hidden, static orb glow |
+| **Tablet Portrait** | 768px – 820px (iPad 10th gen, iPad Air) | 2-column metrics, wide vertical stack | Canvas loops stopped, composite repaints reduced to 0 |
+| **Tablet Landscape / Laptop** | 900px – 1024px (iPad Pro, Small Laptops) | Desktop layout, scaled scene | Drag hint indicator active, full navigation menu |
+| **Desktop Monitors** | 1280px – 1920px+ (FHD & 4K Displays) | Full 1536x1024 radial ecosystem | 60 FPS cyber data rain, active neural mesh, 3D tilt |
+
+### Mobile Resource Optimizations:
+1. **Disabled 3D Floor:** `transform: perspective(...)` floor grid is completely unmounted on `<= 768px`.
+2. **Disabled Ring Animations:** Infinite continuous spin animations (`spin`, `spinReverse`) on the orb rings are hidden and halted on mobile.
+3. **Canvas Deactivation:** Constellation and cyber rain canvases unhook their `requestAnimationFrame` cycles on mobile screens, saving significant CPU and battery usage.
+
+---
+
+## 🔍 Semantic SEO & Search Engine Discoverability
+
+The website follows technical SEO standards for discovery and indexing by Google:
+
+- **Canonical URL Declaration:** Set to official production domain (`https://portfolio-ten-zeta-y2ibotfr2g.vercel.app/`).
+- **Rich JSON-LD Structured Data Schema:**
+  - `Person` schema with `jobTitle`, `alumniOf`, `knowsAbout`, `sameAs` social profiles, and geographical tags.
+  - `WebSite` schema with semantic search context.
+  - `ProfilePage` schema linking content hierarchy.
+- **OpenGraph & Twitter Card Metadata:** High-resolution 1200×630 preview card (`assets/og-image.jpg`) configured for rich link previews across LinkedIn, Twitter/X, Discord, and Slack.
+- **Robots & Sitemap Configuration:**
+  - Valid [`robots.txt`](./robots.txt) pointing directly to the XML sitemap.
+  - Machine-readable [`sitemap.xml`](./sitemap.xml) declaring `lastmod`, `changefreq`, and `priority`.
+- **Semantic HTML5 Architecture:** Strictly organized with `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, and `<footer>` elements; unique `<h1>` title with logical `<h2>` and `<h3>` heading hierarchy.
+
+---
+
+## 🛡️ Application Security & Red-Team Hardening
+
+A comprehensive red-team security assessment was conducted, resulting in the implementation of strict HTTP security policies in [`vercel.json`](./vercel.json):
+
+```json
+{
+  "key": "Content-Security-Policy",
+  "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net data:; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://mail.google.com; upgrade-insecure-requests;"
+}
 ```
 
-1. **Lycée Abass El Miftah** (2021 – 2022)*Baccalauréat en Sciences Physiques* — Strong foundation in mathematics, analytical reasoning, and scientific methodology.
-2. **Institut Spécialisé de Technologie Appliquée NTIC (Rabat Hay Riad)** (2024 – 2026)*Technicien Spécialisé en Développement Digital (Option Full Stack Web)* — Comprehensive specialization in software architecture, MERN stack, Laravel, REST APIs, and database engineering *(Highest / Most Recent)*.
-3. **Université Mohammed V de Rabat** (2023 – 2027)
-   *Licence d'Études Fondamentales en Sciences Économiques et Gestion* — Advanced study of business analytics, organizational strategy, and financial mechanisms.
+### Security Defenses:
+- **Strict Content Security Policy (CSP):** Blocks execution of untrusted external scripts, disallows object plugins (`object-src 'none'`), and restricts base URI manipulation (`base-uri 'self'`).
+- **Anti-Clickjacking:** `X-Frame-Options: DENY` and `frame-ancestors 'none'` prevent the application from being embedded in unauthorized `<iframe>` contexts.
+- **MIME-Sniffing Mitigation:** `X-Content-Type-Options: nosniff` forces browsers to adhere strictly to declared MIME types.
+- **HSTS Enforcement:** `Strict-Transport-Security` set to `max-age=63072000; includeSubDomains; preload` ensuring all connections occur over HTTPS.
+- **Permissions-Policy:** Explicitly revokes sensitive browser capabilities (`camera=(), microphone=(), geolocation=(), payment=(), usb=()`).
+- **Phishing Protection:** External links utilize `rel="noopener noreferrer"`. Email actions link directly to Gmail Web Intent (`mail.google.com/mail/?view=cm&...`) to prevent protocol handler vulnerabilities.
 
 ---
 
-## 🛠 Tech Stack & Architecture
+## 🎓 Academic Background & Credentials
 
-- **Markup & Semantics:** HTML5, Accessible WAI-ARIA roles, SEO OpenGraph tags.
-- **Styling & Layout:** Vanilla CSS3, CSS Custom Properties (Variables), Flexbox, CSS Grid, Glassmorphism, Neon Drop Shadows.
-- **Logic & Effects:** Vanilla JavaScript (ES6+), HTML5 Canvas 2D Context, SVG DOM manipulation.
-- **Icons & Typography:** Devicon CDN, Google Fonts (*Inter*, *DM Mono*).
-- **Deployment Target:** Static Hosting (Netlify, Vercel, GitHub Pages, Apache, NGINX).
+```mermaid
+graph TD
+    A["01 · Lycée Abass El Miftah (2021 — 2022)<br/><b>Baccalauréat Sciences Physiques</b><br/>Analytical logic, advanced mathematics, physics"]
+    B["02 · ISTA NTIC Rabat Hay Riad (2024 — 2026)<br/><b>Technicien Spécialisé en Développement Digital</b><br/>Full Stack Web Architecture, MERN Stack, Laravel, REST APIs"]
+    C["03 · Université Mohammed V de Rabat (2023 — 2027)<br/><b>Licence en Sciences Économiques et Gestion</b><br/>Business strategy, financial mechanics, project management"]
+
+    A --> B
+    B --> C
+    style B stroke:#00f0ff,stroke-width:2px,fill:#141b2b
+```
 
 ---
 
-## 📁 Project Structure
+## 💼 Featured Production Projects
+
+### 1. [JobFinder AI ↗](https://ai-job-finder-orcin.vercel.app/)
+- **Summary:** AI-powered job discovery and resume matching system.
+- **Key Architecture:** BYOK (Bring Your Own Key) architecture for Mistral AI LLM, real-time job scraping via SerpApi, semantic parsing, compatibility scoring (0–100%), and interactive resume upload analysis.
+- **Stack:** React, Node.js, Mistral AI API, SerpApi, Vercel Serverless.
+
+### 2. [DOMINATORES 3D ↗](https://github.com/Cherkaoui7/event)
+- **Summary:** Luxury real estate and event venue presentation platform.
+- **Key Architecture:** Interactive 3D WebGL scene exploration, procedural floor plan navigation, booth reservation engine, and authenticated customer reservation portal.
+- **Stack:** Three.js, React 18, Laravel 10, Sanctum, MySQL.
+
+### 3. [Assurances Cherkaoui ↗](https://assurances-cherkaoui.vercel.app/)
+- **Summary:** Production insurance brokerage and quote automation platform.
+- **Key Architecture:** Dynamic quotation calculators for auto and home insurance, transactional email dispatch via NodeMailer, and administrative dashboard.
+- **Stack:** MongoDB, Express.js, React, Node.js.
+
+### 4. [AURORA Store ↗](https://aurorastore-six.vercel.app/)
+- **Summary:** High-performance responsive eCommerce platform.
+- **Key Architecture:** Smooth physics transitions, real-time product filtering, shopping cart state management, and optimized asset delivery pipeline.
+- **Stack:** MongoDB, Express.js, React, Node.js, Framer Motion.
+
+### 5. [ArchivePro (Agdal-Ryad) ↗](https://archivesemp.netlify.app/)
+- **Summary:** Municipal digital archiving and record management system built for *Conseil de l'Arrondissement Agdal-Ryad*.
+- **Key Architecture:** Offline-first Progressive Web App, client-side indexing with IndexedDB, high-volume Excel reporting via SheetJS, and interactive analytics charts.
+- **Stack:** Offline PWA, IndexedDB, Chart.js, SheetJS, Netlify.
+
+---
+
+## 📁 Project Structure & Codebase Map
 
 ```text
 cherkaoui-portfolio-v2-animated/
-├── index.html              # Main HTML markup & section architecture
-├── style.css               # Core styling, responsive layouts, Monokai theme & animations
-├── script.js               # Terminal typer, neural canvas, 3D tilt & interaction scripts
-├── lang.js                 # Complete bilingual dictionary & translation engine (EN/FR)
+├── index.html              # Semantic HTML5 markup, structured data JSON-LD, and critical CSS
+├── style.css               # Design system tokens, responsive layouts, 3D visualizers, and themes
+├── script.js               # Performance-optimized DOM logic, touch controllers, and canvas handlers
+├── lang.js                 # Complete bilingual EN/FR dictionary and zero-reload translation engine
+├── sw.js                   # Service worker handling offline caching and cache-first strategies
+├── vercel.json             # Edge security headers, CSP rules, and asset cache-control policies
+├── sitemap.xml             # Search engine XML sitemap with priority rankings and update frequencies
+├── robots.txt              # Web crawler directives and sitemap declarations
+├── start-server.bat        # Windows one-click local development script
 ├── assets/
-│   ├── ABDESSAMAD CHERKAOUI (2).pdf   # Official curriculum vitae / resume
-│   └── reference-*.png                 # Design reference mockups
-└── README.md               # Project documentation & overview
+│   ├── CV Abdessamad Cherkaoui – Développeur Web Full-Stack.pdf   # Official French CV
+│   ├── Professional Full-Stack CV Abdessamad Cherkaoui.pdf        # Official English CV
+│   └── og-image.jpg                                               # High-res OpenGraph preview asset
+└── README.md               # Master technical documentation
 ```
 
 ---
 
-## 💻 Getting Started
+## 💻 Local Development & Setup
 
-Because this project uses pure vanilla technologies, **no build step, package manager, or compilation is required**.
+Because this project relies exclusively on pure web standards, **no build step, bundler, or `npm install` is required**.
 
-### Option 1: Live Server (VS Code)
-
-1. Open the project folder in **Visual Studio Code**.
-2. Install the **Live Server** extension (`ritwickdey.liveserver`).
-3. Right-click `index.html` and select **"Open with Live Server"**.
-
-### Option 2: Python Local Server
-
+### Running via Python (Recommended)
 ```bash
-# Python 3 (Binds directly to IPv4 localhost)
+# Clone the repository
+git clone https://github.com/Cherkaoui7/portfolio.git
+cd portfolio
+
+# Start a lightweight local HTTP server
 python -m http.server 8000 --bind 127.0.0.1
 ```
+Open [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser.
 
-Then click or visit [http://127.0.0.1:8000](http://127.0.0.1:8000) or [http://localhost:8000](http://localhost:8000) in your web browser.
+### Running on Windows
+Double-click [`start-server.bat`](./start-server.bat) to launch a local server and open the site in your default browser automatically.
 
-### Option 3: Node.js http-server
-
+### Running via Node.js
 ```bash
 npx http-server . -p 8000
 ```
 
 ---
 
-## 🚢 Deployment
+## 🚢 Deployment Workflow
 
-### Deploy to Vercel
+The project is configured for continuous automated deployment:
 
-```bash
-npm i -g vercel
-vercel deploy
-```
+### Vercel Deployment (Current Production)
+1. Push changes to `main`:
+   ```bash
+   git add .
+   git commit -m "feat: your descriptive commit message"
+   git push origin main
+   ```
+2. Vercel automatically deploys the updated build and applies headers defined in `vercel.json`.
 
-### Deploy to Netlify
+### Netlify Deployment
+- Link the GitHub repository in the Netlify dashboard or drag and drop the folder into Netlify Drop.
 
-- Drag and drop the repository folder directly into the [Netlify Drop](https://app.netlify.com/drop) console, or connect via GitHub for automated continuous deployment.
-
-### Deploy to GitHub Pages
-
-1. Go to repository **Settings** > **Pages**.
-2. Select branch `main` and root directory `/`.
-3. Save to publish instantly.
-
----
-
-## 📬 Contact
-
-- **Name:** Abdessamad Cherkaoui
-- **Email:** [cherkaouiabdessamad9@gmail.com](https://mail.google.com/mail/?view=cm&fs=1&to=cherkaouiabdessamad9@gmail.com)
-- **LinkedIn:** [linkedin.com/in/cherkaoui-abdessamad-750294212](https://www.linkedin.com/in/cherkaoui-abdessamad-750294212/)
-- **GitHub:** [@Cherkaoui7](https://github.com/Cherkaoui7)
-- **Location:** Rabat, Morocco
+### GitHub Pages
+- Configured under repository **Settings** > **Pages** > Branch: `main`, Directory: `/ (root)`.
 
 ---
 
-*© 2026 Abdessamad Cherkaoui. All rights reserved.*
+## 📬 Contact & Professional Inquiries
+
+- **Full Name:** Abdessamad Cherkaoui
+- **Title:** Full-Stack JavaScript Developer & AI Systems Engineer
+- **Location:** Rabat, Morocco (Available for Global Remote Opportunities)
+- **Direct Email:** [cherkaouiabdessamad9@gmail.com](https://mail.google.com/mail/?view=cm&fs=1&to=cherkaouiabdessamad9@gmail.com)
+- **LinkedIn Profile:** [linkedin.com/in/cherkaoui-abdessamad-750294212](https://www.linkedin.com/in/cherkaoui-abdessamad-750294212/)
+- **GitHub Organization:** [@Cherkaoui7](https://github.com/Cherkaoui7)
+
+---
+
+*© 2026 Abdessamad Cherkaoui. Handcrafted with passion, pure JavaScript, and zero framework overhead.*
