@@ -170,12 +170,14 @@
       scroll-behavior: smooth;
     }
 
+    html,
     body {
+      max-width: 100%;
+      overflow-x: hidden;
       margin: 0;
       background: var(--bg);
       color: var(--text);
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      overflow-x: hidden;
       text-rendering: optimizeSpeed;
     }
 
@@ -242,11 +244,13 @@
     }
 
     .hero-title {
-      font-size: clamp(68px, 8.5vw, 120px);
-      line-height: .84;
-      letter-spacing: -.09em;
+      font-size: clamp(42px, 8.5vw, 120px);
+      line-height: .88;
+      letter-spacing: -.08em;
       margin: 28px 0 34px;
       font-weight: 800;
+      word-break: break-word;
+      overflow-wrap: break-word;
     }
 
     .hero-title .line {
@@ -266,6 +270,7 @@
 
     .hero-actions {
       display: flex;
+      flex-wrap: wrap;
       gap: 14px;
       margin-top: 31px;
     }
@@ -285,6 +290,20 @@
     .button.secondary {
       background: var(--surface);
       color: var(--text);
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding-top: 60px; gap: 40px; min-height: auto; }
+      .section { padding: 80px 20px; }
+    }
+
+    @media (max-width: 640px) {
+      .nav { padding: 0 16px; height: 64px; }
+      .hero-title { font-size: clamp(34px, 10vw, 54px); }
+      .hero-actions { flex-direction: column; width: 100%; gap: 10px; }
+      .hero-actions .button { width: 100%; justify-content: center; text-align: center; display: flex; }
+      .section { padding: 60px 16px; }
     }
   </style>
 </head>
@@ -784,8 +803,11 @@
       </div>
 
       <div class="mindmap-wrapper reveal">
+        <div class="mindmap-swipe-hint" aria-hidden="true">
+          <span data-i18n="mindmap_hint">↔ Drag to explore ecosystem</span>
+        </div>
         <canvas id="mindmapRainCanvas" class="mindmap-rain-canvas" aria-hidden="true"></canvas>
-        <div class="scene">
+        <div class="scene mindmap-scene-desktop">
           <svg class="connections" viewBox="0 0 1536 1024" preserveAspectRatio="none" aria-hidden="true">
             <path class="connection cyan-line" stroke-width="4"
               d="M 319 411 C 345 389, 352 292, 380 239 C 396 211, 420 197, 451 197 L 493 197" />
@@ -964,6 +986,124 @@
               <div class="tech-icon">
                 <div class="creative-symbol">💡</div>
               </div><span data-i18n="core_creative">Creativity</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile: Vertical Tech Stack Ecosystem (Active <= 768px) -->
+        <div class="mindmap-vertical-mobile" aria-label="Tech Stack Categories">
+          <!-- Ambient glowing spine connecting nodes -->
+          <svg class="mv-spine-svg" viewBox="0 0 100 900" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="mvSpineGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.8" />
+                <stop offset="33%" stop-color="#b026ff" stop-opacity="0.8" />
+                <stop offset="66%" stop-color="#00e5a3" stop-opacity="0.8" />
+                <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.8" />
+              </linearGradient>
+            </defs>
+            <path d="M 50 75 Q 85 185, 50 295 T 50 515 T 50 735" fill="none" stroke="url(#mvSpineGrad)" stroke-width="2" stroke-dasharray="4 6" opacity="0.65" />
+          </svg>
+
+          <!-- Category 1: Frontend (Cyan) -->
+          <div class="mv-block mv-frontend">
+            <div class="mv-node">
+              <div class="mv-node-circle cyan">
+                <div class="mv-node-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </div>
+                <h3 class="mv-node-title cyan" data-i18n="cat_front_title">Frontend</h3>
+                <p class="mv-node-desc" data-i18n="cat_front_desc">Building interactive and responsive user interfaces</p>
+                <div class="mv-connector cyan" aria-hidden="true"></div>
+              </div>
+            </div>
+            <div class="mv-card cyan">
+              <div class="mv-card-grid">
+                <div class="mv-pill"><i class="devicon-react-original"></i><span>React.js</span></div>
+                <div class="mv-pill"><i class="devicon-nextjs-plain white"></i><span>Next.js</span></div>
+                <div class="mv-pill"><i class="devicon-vuejs-plain"></i><span>Vue.js</span></div>
+                <div class="mv-pill"><i class="devicon-angularjs-plain"></i><span>AngularJS</span></div>
+                <div class="mv-pill"><i class="devicon-javascript-plain"></i><span>JavaScript</span></div>
+                <div class="mv-pill"><div class="three-symbol"></div><span>Three.js</span></div>
+                <div class="mv-pill"><div class="framer-symbol"></div><span>Framer Motion</span></div>
+                <div class="mv-pill"><svg class="mv-pill-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 6c-2.67 0-4.33 1.33-5 4 1-1.33 2.33-1.83 4-1.5 1.05.21 1.8 1 2.63 1.87C14.98 11.77 16.63 13.5 21 13.5c2.67 0 4.33-1.33 5-4-1 1.33-2.33 1.83-4 1.5-1.05-.21-1.8-1-2.63-1.87C18.02 7.73 16.37 6 12 6zm-8 7.5c-2.67 0-4.33 1.33-5 4 1-1.33 2.33-1.83 4-1.5 1.05.21 1.8 1 2.63 1.87 1.35 1.4 3 3.13 7.37 3.13 2.67 0 4.33-1.33 5-4-1 1.33-2.33 1.83-4 1.5-1.05-.21-1.8-1-2.63-1.87C10.02 15.23 8.37 13.5 4 13.5z" transform="scale(0.8) translate(3, 2)"></path></svg><span>Tailwind CSS</span></div>
+                <div class="mv-pill"><i class="devicon-bootstrap-plain"></i><span>Bootstrap</span></div>
+                <div class="mv-pill"><i class="devicon-html5-plain"></i><span>HTML5</span></div>
+                <div class="mv-pill"><i class="devicon-css3-plain"></i><span>CSS3</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 2: Backend (Purple) -->
+          <div class="mv-block mv-backend">
+            <div class="mv-node">
+              <div class="mv-node-circle purple">
+                <div class="mv-node-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="7" rx="2"></rect><rect x="2" y="14" width="20" height="7" rx="2"></rect><line x1="6" y1="6.5" x2="6.01" y2="6.5" stroke-width="3"></line><line x1="6" y1="17.5" x2="6.01" y2="17.5" stroke-width="3"></line></svg>
+                </div>
+                <h3 class="mv-node-title purple" data-i18n="cat_back_title">Backend</h3>
+                <p class="mv-node-desc" data-i18n="cat_back_desc">Server-side logic and API development</p>
+                <div class="mv-connector purple" aria-hidden="true"></div>
+              </div>
+            </div>
+            <div class="mv-card purple">
+              <div class="mv-card-grid">
+                <div class="mv-pill"><i class="devicon-nodejs-plain"></i><span>Node.js</span></div>
+                <div class="mv-pill"><span class="mv-txt-badge">EX</span><span>Express.js</span></div>
+                <div class="mv-pill"><i class="devicon-php-plain"></i><span>PHP</span></div>
+                <div class="mv-pill"><i class="devicon-laravel-original"></i><span>Laravel</span></div>
+                <div class="mv-pill"><i class="devicon-python-plain"></i><span>Python</span></div>
+                <div class="mv-pill"><svg class="mv-pill-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg><span>API REST</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 3: Database & Tools (Turquoise) -->
+          <div class="mv-block mv-database">
+            <div class="mv-node">
+              <div class="mv-node-circle green">
+                <div class="mv-node-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                </div>
+                <h3 class="mv-node-title green" data-i18n="cat_db_title">Database &amp; Tools</h3>
+                <p class="mv-node-desc" data-i18n="cat_db_desc">Databases, tools and utilities I rely on</p>
+                <div class="mv-connector green" aria-hidden="true"></div>
+              </div>
+            </div>
+            <div class="mv-card green">
+              <div class="mv-card-grid">
+                <div class="mv-pill"><i class="devicon-mysql-plain"></i><span>MySQL</span></div>
+                <div class="mv-pill"><i class="devicon-mongodb-plain"></i><span>MongoDB</span></div>
+                <div class="mv-pill"><i class="devicon-sqlite-plain"></i><span>SQLite</span></div>
+                <div class="mv-pill"><i class="devicon-git-plain"></i><span>Git</span></div>
+                <div class="mv-pill"><i class="devicon-vitejs-plain"></i><span>Vite</span></div>
+                <div class="mv-pill"><svg class="mv-pill-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><span>NodeMailer</span></div>
+                <div class="mv-pill"><i class="devicon-figma-plain"></i><span>Figma</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 4: Core Competencies (Amber / Gold) -->
+          <div class="mv-block mv-core">
+            <div class="mv-node">
+              <div class="mv-node-circle orange">
+                <div class="mv-node-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <h3 class="mv-node-title orange" data-i18n="cat_core_title">Core Competencies</h3>
+                <p class="mv-node-desc" data-i18n="cat_core_desc">Skills and values that drive my work</p>
+                <div class="mv-connector orange" aria-hidden="true"></div>
+              </div>
+            </div>
+            <div class="mv-card orange">
+              <div class="mv-card-grid">
+                <div class="mv-pill"><svg class="mv-pill-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg><span data-i18n="core_pm">Project Management</span></div>
+                <div class="mv-pill"><svg class="mv-pill-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg><span data-i18n="core_resp">Responsive Web Design</span></div>
+                <div class="mv-pill"><svg class="mv-pill-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2" fill="currentColor"></circle></svg><span data-i18n="core_ai">AI Integration</span></div>
+                <div class="mv-pill"><svg class="mv-pill-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg><span data-i18n="core_team">Team Spirit</span></div>
+                <div class="mv-pill"><svg class="mv-pill-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-7 7c0 2.5 1.5 4.5 3 6h8c1.5-1.5 3-3.5 3-6a7 7 0 0 0-7-7z"></path></svg><span data-i18n="core_creative">Creativity</span></div>
+                <div class="mv-pill"><svg class="mv-pill-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line><path d="M18 10l3-3m0 0l-3-3m3 3H13"></path></svg><span data-i18n="core_solving">Problem Solving</span></div>
+              </div>
             </div>
           </div>
         </div>

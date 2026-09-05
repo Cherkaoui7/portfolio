@@ -132,31 +132,68 @@ const sectionObserver = new IntersectionObserver(entries => {
 sections.forEach(s => sectionObserver.observe(s));
 
 /* =========================================================
-   MIND MAP RESIZE LOGIC
+   MIND MAP RESIZE & TOUCH EXPLORATION LOGIC
 ========================================================== */
 function resizeMindmapScene() {
-  const scene = document.querySelector(".scene");
+  const scene = document.querySelector(".mindmap-scene-desktop");
   const wrapper = document.querySelector(".mindmap-wrapper");
   if (!scene || !wrapper) return;
 
-  const wrapperWidth = wrapper.clientWidth;
-  const wrapperHeight = wrapper.clientHeight;
+  const isMobile = window.innerWidth <= 768;
 
-  // Original design dimensions
+  if (isMobile) {
+    // Mobile vertical layout active: reset wrapper height and avoid desktop transforms
+    wrapper.style.height = "auto";
+    return;
+  }
+
+  const wrapperWidth = wrapper.clientWidth;
+  const wrapperHeight = wrapper.clientHeight || 700;
   const DESIGN_WIDTH = 1536;
   const DESIGN_HEIGHT = 1024;
 
   const scaleX = wrapperWidth / DESIGN_WIDTH;
   const scaleY = wrapperHeight / DESIGN_HEIGHT;
-
-  // Use 95% of max possible scale to add a slight internal padding
   const scale = Math.min(scaleX, scaleY) * 0.95;
 
   scene.style.transform = `scale(${scale})`;
+  scene.style.transformOrigin = "center center";
+  wrapper.style.height = "";
+}
+
+function initMindmapScroll() {
+  const wrapper = document.querySelector(".mindmap-wrapper");
+  if (!wrapper) return;
+
+  let isDown = false;
+  let startX = 0;
+  let scrollLeft = 0;
+
+  wrapper.addEventListener("mousedown", (e) => {
+    isDown = true;
+    wrapper.style.cursor = "grabbing";
+    startX = e.pageX - wrapper.offsetLeft;
+    scrollLeft = wrapper.scrollLeft;
+  });
+
+  window.addEventListener("mouseup", () => {
+    isDown = false;
+    if (wrapper) wrapper.style.cursor = "grab";
+  });
+
+  wrapper.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - wrapper.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    wrapper.scrollLeft = scrollLeft - walk;
+  });
 }
 
 resizeMindmapScene();
+initMindmapScroll();
 window.addEventListener("resize", resizeMindmapScene, { passive: true });
+
 
 /* =========================================================
    LANGUAGE TOGGLE & I18N
@@ -270,6 +307,12 @@ updateTranslations();
 (function initNeuralConstellation() {
   const canvas = document.getElementById("neuralCanvas");
   if (!canvas) return;
+
+  // Turn off on mobile to eliminate animation overhead and ensure instantaneous page loading
+  if (window.innerWidth <= 768) {
+    canvas.style.display = 'none';
+    return;
+  }
 
   const ctx = canvas.getContext("2d");
   const wrapper = canvas.closest(".neural-network-wrapper");
@@ -537,6 +580,12 @@ updateTranslations();
 (function initMindmapCyberRain() {
   const canvas = document.getElementById("mindmapRainCanvas");
   if (!canvas) return;
+
+  // Turn off on mobile to eliminate animation overhead and keep the site light and fast
+  if (window.innerWidth <= 768) {
+    canvas.style.display = 'none';
+    return;
+  }
 
   const ctx = canvas.getContext("2d");
   const wrapper = canvas.closest(".mindmap-wrapper");
