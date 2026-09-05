@@ -114,7 +114,7 @@ Each featured project includes a custom CSS3 3D animated visual preview:
 
 ### 7. Precision Micro-Interactions & Physics
 - **Dual-Ring Custom Cursor:** Real-time trailing dot and spring-interpolated outer halo (automatically disabled on touch devices via `pointer: coarse`).
-- **Magnetic Action Buttons:** Buttons softly pull toward cursor position within proximity radius.
+- **Magnetic Action Buttons:** Buttons softly pull toward cursor position within proximity radius (strictly isolated to mouse pointers via `pointer: fine` to prevent gesture cancellation on touchscreens).
 - **3D Card Hover Tilt:** Gentle 3D perspective tilt calculations on desktop hover.
 - **Dynamic Scroll Progress Bar:** Ambient progress indicator at the top of the viewport tracking reading depth.
 
@@ -132,10 +132,13 @@ The portfolio was engineered and verified across all standard viewport widths:
 | **Tablet Landscape / Laptop** | 900px – 1024px (iPad Pro, Small Laptops) | Desktop layout, scaled scene | Drag hint indicator active, full navigation menu |
 | **Desktop Monitors** | 1280px – 1920px+ (FHD & 4K Displays) | Full 1536x1024 radial ecosystem | 60 FPS cyber data rain, active neural mesh, 3D tilt |
 
-### Mobile Resource Optimizations:
+### Mobile Resource Optimizations & Touch Hardening:
 1. **Disabled 3D Floor:** `transform: perspective(...)` floor grid is completely unmounted on `<= 768px`.
 2. **Disabled Ring Animations:** Infinite continuous spin animations (`spin`, `spinReverse`) on the orb rings are hidden and halted on mobile.
 3. **Canvas Deactivation:** Constellation and cyber rain canvases unhook their `requestAnimationFrame` cycles on mobile screens, saving significant CPU and battery usage.
+4. **Touch Layer Hit-Testing Isolation:** Decorative card backgrounds (such as the 560px rotated geometric spans in `.contact-bg`) enforce `pointer-events: none !important;` while interactive button groups are elevated (`z-index: 10`), guaranteeing 100% click/tap responsiveness on mobile devices.
+5. **Gesture-Safe Tap Execution:** Magnetic hover transforms are strictly gated behind `window.matchMedia("(pointer: fine)")` so that mobile finger taps are never misclassified by mobile browsers as pan gestures.
+6. **Smooth Top Navigation:** Back-to-top buttons combine semantic anchor IDs (`#top`) with programmatic smooth scrolling (`window.scrollTo({ top: 0, behavior: 'smooth' })`).
 
 ---
 
