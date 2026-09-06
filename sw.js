@@ -1,9 +1,9 @@
 // Ultra-fast Service Worker for 1ms Cache Retrieval
-const CACHE_NAME = 'cherkaoui-cache-v7';
+const CACHE_NAME = 'cherkaoui-cache-v8';
 const PRECACHE_ASSETS = [
   './',
   './index.html',
-  './style.css?v=20260904_09',
+  './style.css?v=20260905_02',
   './lang.js?v=20260904_09',
   './script.js?v=20260904_09'
 ];
@@ -40,19 +40,20 @@ self.addEventListener('fetch', (event) => {
   if (event.request.mode === 'navigate') {
     event.respondWith(
       caches.match(event.request)
-        .then((cached) => cached || caches.match('./index.html') || caches.match('./'))
-        .then((cachedResponse) => {
-          const fetchPromise = fetch(event.request)
-            .then((networkResponse) => {
-              if (networkResponse && networkResponse.status === 200) {
-                const clone = networkResponse.clone();
-                caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
-              }
-              return networkResponse;
-            })
-            .catch(() => cachedResponse);
-
-          return cachedResponse || fetchPromise;
+        .then((cached) => {
+          if (cached) {
+            // Background revalidation for seamless zero-stale navigation
+            fetch(event.request)
+              .then((networkResponse) => {
+                if (networkResponse && networkResponse.status === 200) {
+                  const clone = networkResponse.clone();
+                  caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+                }
+              })
+              .catch(() => { });
+            return cached;
+          }
+          return fetch(event.request);
         })
     );
     return;
@@ -69,14 +70,14 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // 5. Static assets: Cache First with secure background revalidation
+  // 5. Static assets: Cache First with secure background revalidation (supports standard and opaque responses)
   event.respondWith(
     caches.match(event.request).then((cached) => {
       if (cached) {
         // Asynchronously update cache in background with cloned response
         fetch(event.request)
           .then((networkResponse) => {
-            if (networkResponse && networkResponse.status === 200) {
+            if (networkResponse && (networkResponse.status === 200 || networkResponse.type === 'opaque')) {
               const clone = networkResponse.clone();
               caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
             }
@@ -86,7 +87,7 @@ self.addEventListener('fetch', (event) => {
       }
 
       return fetch(event.request).then((networkResponse) => {
-        if (networkResponse && networkResponse.status === 200) {
+        if (networkResponse && (networkResponse.status === 200 || networkResponse.type === 'opaque')) {
           const clone = networkResponse.clone();
           caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
         }

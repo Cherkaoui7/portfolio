@@ -3389,6 +3389,21 @@ body.cursor-hover .cursor-ring {
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+.tech-icon i[class*="devicon-"] {
+  font-family: "devicon" !important;
+  font-style: normal;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.tech-icon svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
 .tech-card:hover .tech-icon {
   transform: scale(1.18);
 }
@@ -3583,6 +3598,18 @@ body.cursor-hover .cursor-ring {
 
 .vite i {
   color: #bd34fe;
+}
+
+.figma i {
+  color: #f24e1e;
+}
+
+[data-theme="light"] .next i {
+  color: #0f1115 !important;
+}
+
+[data-theme="light"] .next span.white {
+  color: #0f1115 !important;
 }
 
 .custom-icon {
