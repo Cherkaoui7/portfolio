@@ -460,7 +460,7 @@ body.cursor-hover .cursor-ring {
 
 .code-top small {
   font: 11px "DM Mono", monospace;
-  color: #75715e;
+  color: #a8a490;
   margin-left: 8px;
   letter-spacing: .04em
 }
@@ -479,12 +479,12 @@ body.cursor-hover .cursor-ring {
 
 .code-body i {
   font-style: normal;
-  color: #75715e;
+  color: #a8a490;
   user-select: none
 }
 
 .code-body b {
-  color: #f92672;
+  color: #ff5388;
   font-weight: 600;
   font-style: normal
 }
@@ -510,8 +510,8 @@ body.cursor-hover .cursor-ring {
   display: inline-block;
   width: 7px;
   height: 13px;
-  background: #f92672 !important;
-  box-shadow: 0 0 8px #f92672;
+  background: #ff5388 !important;
+  box-shadow: 0 0 8px #ff5388;
   margin-left: 4px;
   vertical-align: middle;
   animation: blink 1s steps(1) infinite
@@ -520,8 +520,8 @@ body.cursor-hover .cursor-ring {
 .terminal-cursor span {
   width: 7px;
   height: 13px;
-  background: #f92672;
-  box-shadow: 0 0 8px #f92672;
+  background: #ff5388;
+  box-shadow: 0 0 8px #ff5388;
   display: inline-block;
   animation: blink 1s steps(1) infinite
 }
@@ -3493,11 +3493,11 @@ body.cursor-hover .cursor-ring {
 }
 
 .git {
-  width: 84px;
+  width: 100px;
 }
 
 .vite {
-  width: 88px;
+  width: 121px;
 }
 
 .nodemailer {
