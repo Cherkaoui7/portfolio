@@ -1,6 +1,6 @@
 # =========================================================================
 # Robots.txt for Abdessamad Cherkaoui Portfolio
-# Official Website: https://portfolio-ten-zeta-y2ibotfr2g.vercel.app/
+# Official Website: https://portfolio-abdessamad-cherkaoui.vercel.app/sitemap.xml
 # (If custom domain configured, replace canonical domain below)
 # =========================================================================
 
@@ -8,4 +8,4 @@ User-agent: *
 Allow: /
 
 # Sitemap Location
-Sitemap: https://portfolio-ten-zeta-y2ibotfr2g.vercel.app/sitemap.xml
+Sitemap: https://portfolio-abdessamad-cherkaoui.vercel.app/sitemap.xml
