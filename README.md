@@ -237,7 +237,7 @@ A comprehensive red-team security assessment was conducted, resulting in the imp
 graph TD
     A["01 · Lycée Abass El Miftah (2021 — 2022)<br/><b>Baccalauréat Sciences Physiques</b><br/>Analytical logic, advanced mathematics, physics"]
     B["02 · ISTA NTIC Rabat Hay Riad (2024 — 2026)<br/><b>Technicien Spécialisé en Développement Digital</b><br/>Full Stack Web Architecture, MERN Stack, Laravel, REST APIs"]
-    C["03 · Université Mohammed V de Rabat (2023 — 2027)<br/><b>Licence en Sciences Économiques et Gestion</b><br/>Business strategy, financial mechanics, project management"]
+    C["03 · Université Mohammed V de Rabat (2023 — 2027)<br/><b>Licence en Études d'anglaises</b><br/>Communication, Leadership, teamwork, creativity "]
 
     A --> B
     B --> C
