@@ -1,6 +1,6 @@
 # ⚡ Abdessamad Cherkaoui — Engineering Portfolio
 
-[![Live Production](https://img.shields.io/badge/Production_Live-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://portfolio-ten-zeta-y2ibotfr2g.vercel.app/)
+[![Live Production](https://img.shields.io/badge/Production_Live-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://portfolio-abdessamad-cherkaoui.vercel.app/)
 [![GitHub Repository](https://img.shields.io/badge/GitHub_Repo-Cherkaoui7%2Fportfolio-181717?style=for-the-badge&logo=github)](https://github.com/Cherkaoui7/portfolio)
 [![Lighthouse](https://img.shields.io/badge/Lighthouse-100%20%7C%20100%20%7C%20100%20%7C%20100-brightgreen?style=for-the-badge&logo=lighthouse&logoColor=white)](#-lighthouse--wcag-accessibility-audit-100-scorecard)
 [![Architecture](https://img.shields.io/badge/Stack-Vanilla_JS_•_HTML5_•_CSS3-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](#-architectural-philosophy)
@@ -55,7 +55,7 @@ The portfolio was engineered under a strict **zero-bloat, static-first, progress
 
 | Application                    | Role & Architecture                               | Stack                                      | Live URL                                                                      | Source Code                                         |
 | :----------------------------- | :------------------------------------------------ | :----------------------------------------- | :---------------------------------------------------------------------------- | :-------------------------------------------------- |
-| **Official Portfolio**   | Personal Developer Portfolio & AI Engineering Hub | HTML5, CSS3, Vanilla JS, SVG, Canvas 2D    | [🔗 Live on Vercel](https://portfolio-ten-zeta-y2ibotfr2g.vercel.app/)         | [GitHub](https://github.com/Cherkaoui7/portfolio)    |
+| **Official Portfolio**   | Personal Developer Portfolio & AI Engineering Hub | HTML5, CSS3, Vanilla JS, SVG, Canvas 2D    | [🔗 Live on Vercel](https://portfolio-abdessamad-cherkaoui.vercel.app/)         | [GitHub](https://github.com/Cherkaoui7/portfolio)    |
 | **JobFinder AI**         | BYOK Job Aggregator & Mistral AI Resume Matcher   | React, Node.js, Mistral AI, SerpApi        | [🔗 ai-job-finder-orcin.vercel.app](https://ai-job-finder-orcin.vercel.app/)   | [GitHub](https://github.com/Cherkaoui7/AiJobFinder)  |
 | **Assurances Cherkaoui** | Production Insurance Brokerage Platform           | MERN Stack (MongoDB, Express, React, Node) | [🔗 assurances-cherkaoui.vercel.app](https://assurances-cherkaoui.vercel.app/) | [GitHub](https://github.com/Cherkaoui7/assurance_ch) |
 | **AURORA Store**         | Modern eCommerce Platform with Spring Physics     | React, Express, MongoDB, Node.js           | [🔗 aurorastore-six.vercel.app](https://aurorastore-six.vercel.app/)           | [GitHub](https://github.com/Cherkaoui7/aurora_store) |
@@ -169,7 +169,7 @@ The portfolio was engineered and verified across all standard viewport widths:
 
 The website follows technical SEO standards for discovery and indexing by Google:
 
-- **Canonical URL Declaration:** Set to official production domain (`https://portfolio-ten-zeta-y2ibotfr2g.vercel.app/`).
+- **Canonical URL Declaration:** Set to official production domain (`https://portfolio-abdessamad-cherkaoui.vercel.app/`).
 - **Rich JSON-LD Structured Data Schema:**
   - `Person` schema with `jobTitle`, `alumniOf`, `knowsAbout`, `sameAs` social profiles, and geographical tags.
   - `WebSite` schema with semantic search context.
