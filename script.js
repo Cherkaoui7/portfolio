@@ -206,11 +206,48 @@ window.addEventListener("resize", resizeMindmapScene, { passive: true });
 
 
 /* =========================================================
-   LANGUAGE TOGGLE & I18N
+   LANGUAGE TOGGLE & I18N (AUTO-DETECTION & PREFERENCE)
 ========================================================== */
 const VALID_LANGS = ["en", "fr"];
-const storedLang = localStorage.getItem("cherkaoui-lang");
-let currentLang = VALID_LANGS.includes(storedLang) ? storedLang : "en";
+
+function detectInitialLanguage() {
+  // 1. Prioritize user's saved manual preference
+  try {
+    const stored = localStorage.getItem("cherkaoui-lang");
+    if (stored && VALID_LANGS.includes(stored)) {
+      return stored;
+    }
+  } catch (e) {}
+
+  // 2. Allow language override via URL parameter (?lang=fr or ?lang=en)
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    const param = urlParams.get("lang");
+    if (param && VALID_LANGS.includes(param.toLowerCase())) {
+      return param.toLowerCase();
+    }
+  } catch (e) {}
+
+  // 3. Automatically detect user's system / browser language
+  try {
+    const languages = navigator.languages || [navigator.language || navigator.userLanguage || "en"];
+    for (const lang of languages) {
+      if (!lang) continue;
+      const primaryLang = lang.toLowerCase().split("-")[0];
+      if (primaryLang === "fr") {
+        return "fr";
+      }
+      if (primaryLang === "en") {
+        return "en";
+      }
+    }
+  } catch (e) {}
+
+  // 4. Fallback default
+  return "en";
+}
+
+let currentLang = detectInitialLanguage();
 const langToggleBtn = document.getElementById("langToggle");
 
 function updateTranslations() {
@@ -226,15 +263,22 @@ function updateTranslations() {
       el.innerHTML = t[key];
     }
   });
-  langToggleBtn.textContent = currentLang === "en" ? "FR" : "EN";
+  if (langToggleBtn) {
+    langToggleBtn.textContent = currentLang === "en" ? "FR" : "EN";
+    langToggleBtn.setAttribute("aria-label", currentLang === "en" ? "Passer en français" : "Switch to English");
+  }
   startTypewriter();
 }
 
-langToggleBtn.addEventListener("click", () => {
-  currentLang = currentLang === "en" ? "fr" : "en";
-  localStorage.setItem("cherkaoui-lang", currentLang);
-  updateTranslations();
-});
+if (langToggleBtn) {
+  langToggleBtn.addEventListener("click", () => {
+    currentLang = currentLang === "en" ? "fr" : "en";
+    try {
+      localStorage.setItem("cherkaoui-lang", currentLang);
+    } catch (e) {}
+    updateTranslations();
+  });
+}
 
 /* =========================================================
    TYPEWRITER EFFECT
