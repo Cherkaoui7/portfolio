@@ -238,9 +238,11 @@ graph TD
     A["01 · Lycée Abass El Miftah (2021 — 2022)<br/><b>Baccalauréat Sciences Physiques</b><br/>Analytical logic, advanced mathematics, physics"]
     B["02 · ISTA NTIC Rabat Hay Riad (2024 — 2026)<br/><b>Technicien Spécialisé en Développement Digital</b><br/>Full Stack Web Architecture, MERN Stack, Laravel, REST APIs"]
     C["03 · Université Mohammed V de Rabat (2023 — 2027)<br/><b>Licence en Études d'anglaises</b><br/>Communication, Leadership, teamwork, creativity "]
+    D["04 · École Supérieure de Management de Télécommunication et d’Informatique Sup MTI(2026 — 2027)<br/><b> Licence , Ingénierie des systèmes informatiques</b><br/>Développement full-stack, Génie Logiciel et Bases de Données (PL/SQL), +10 compétences "]
 
     A --> B
     B --> C
+    C --> D
     style B stroke:#00f0ff,stroke-width:2px,fill:#141b2b
 ```
 
