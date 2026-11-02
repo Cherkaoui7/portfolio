@@ -351,25 +351,18 @@ updateTranslations();
   // Hub positions (calculated dynamically from DOM)
   function getHubCoordinates() {
     const rect = canvas.getBoundingClientRect();
-    const hub1 = wrapper.querySelector(".neural-hub.hub-1");
-    const hub2 = wrapper.querySelector(".neural-hub.hub-2");
     const hubs = [];
+    const hubElements = wrapper.querySelectorAll(".neural-hub");
 
-    if (hub1 && window.getComputedStyle(hub1).display !== "none") {
-      const r1 = hub1.getBoundingClientRect();
-      hubs.push({
-        x: r1.left + r1.width / 2 - rect.left,
-        y: r1.top + r1.height / 2 - rect.top
-      });
-    }
-
-    if (hub2 && window.getComputedStyle(hub2).display !== "none") {
-      const r2 = hub2.getBoundingClientRect();
-      hubs.push({
-        x: r2.left + r2.width / 2 - rect.left,
-        y: r2.top + r2.height / 2 - rect.top
-      });
-    }
+    hubElements.forEach(hub => {
+      if (window.getComputedStyle(hub).display !== "none") {
+        const r = hub.getBoundingClientRect();
+        hubs.push({
+          x: r.left + r.width / 2 - rect.left,
+          y: r.top + r.height / 2 - rect.top
+        });
+      }
+    });
 
     return hubs;
   }

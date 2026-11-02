@@ -1566,8 +1566,8 @@ body.cursor-hover .cursor-ring {
 
 .neural-cards-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 36px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
   width: 100%;
   position: relative;
   z-index: 2;
@@ -1599,6 +1599,10 @@ body.cursor-hover .cursor-ring {
 
 .neural-net-card.card-03 {
   border-radius: 18px 48px 18px 18px;
+}
+
+.neural-net-card.card-04 {
+  border-radius: 18px;
 }
 
 .neural-net-card:hover {
@@ -1670,11 +1674,15 @@ body.cursor-hover .cursor-ring {
 }
 
 .neural-hub.hub-1 {
-  left: calc(33.333% + 2px);
+  left: 25%;
 }
 
 .neural-hub.hub-2 {
-  left: calc(66.666% + 2px);
+  left: 50%;
+}
+
+.neural-hub.hub-3 {
+  left: 75%;
 }
 
 .hub-core {
