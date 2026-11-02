@@ -248,7 +248,7 @@ const translations = {
     "edu3_status": "Rabat · En cours",
     "edu4_date": "Septembre 2026 – Juillet 2027",
     "edu4_school": "École Supérieure de Management de Télécommunication et d’Informatique Sup MTI",
-    "edu4_course": "Licence — Ingénierie des systèmes informatiques",
+    "edu4_course": "Licence , Ingénierie des systèmes informatiques",
     "edu4_status": "Rabat · En cours",
     "stack_eyebrow": "04 / Compétences",
     "stack_title": "Une stack large.<br><span class=\"accent-text\">Approfondie là où ça compte.</span>",
