@@ -92,7 +92,7 @@ const translations = {
     "edu3_course": "Bachelor’s Degree — English Studies",
     "edu3_status": "Rabat · Ongoing",
     "edu4_date": "September 2026 – July 2027",
-    "edu4_school": "École Supérieure de Management de Télécommunication et d’Informatique Sup MTI",
+    "edu4_school": "School of Management, Telecommunications, and Computer Science",
     "edu4_course": "Bachelor’s Degree — Computer Engineering",
     "edu4_status": "Rabat · Ongoing",
     "stack_eyebrow": "04 / Skills",
